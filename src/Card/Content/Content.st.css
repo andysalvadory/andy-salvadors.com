@@ -1,0 +1,15 @@
+.root {
+  -st-states: size(enum(medium,large)) , emptyStateContent(boolean) ;
+  padding: 24px 30px 30px;
+}
+
+.root:size(medium){
+  padding: 30px;
+}
+.root:size(large){
+  padding: 36px;
+}
+
+.root:emptyStateContent {
+  padding: 42px;
+}
