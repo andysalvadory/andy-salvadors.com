@@ -1,0 +1,220 @@
+:import {
+  -st-from: "../Foundation/stylable/colors.st.css";
+  -st-named: F00, D80, D10, B10, B20, B40, B50, B60, D10-30, D10-05;
+}
+
+:import {
+  -st-from: "wix-ui-core/hocs.st.css";
+  -st-named: Focusable;
+}
+
+.optionWrapper,
+.optionWrapper .radioWrapper {
+  cursor: initial;
+  box-sizing: border-box;
+  outline: none;
+}
+
+.vertical {
+  display: flex;
+  flex-direction: column;
+}
+
+.horizontal {
+  display: flex;
+}
+
+.horizontal .radioWrapper > label {
+  margin-right: 20px;
+}
+
+.radioWrapper:not(.checked) .radio:hover:not(:active) {
+  background-color: value(B40);
+}
+
+.radioWrapper > input {
+  display: none;
+}
+
+.radioWrapper > label {
+  display: flex;
+  flex-direction: row;
+  cursor: inherit;
+}
+
+.radioWrapper.disabled > label {
+  cursor: default;
+  pointer-events: none;
+}
+
+.radioWrapper > label.vcenter {
+  align-items: center;
+}
+
+.focusableRadioButton {
+  -st-extends: Focusable;
+}
+
+.focusableRadioButton:focus-visible .radioWrapper .radio {
+  outline: none;
+  border-color: value(B10);
+  box-shadow: 0 0 0 3px value(F00);
+}
+
+.horizontal .children {
+  padding-left: 6px;
+}
+
+.children {
+  cursor: pointer;
+  padding-left: 12px;
+}
+
+.radio {
+  box-sizing: border-box;
+  display: inline-block;
+  position: relative;
+  min-width: 16px;
+  height: 16px;
+  border: 1px solid value(B10);
+  background-color: value(D80);
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+/* Margin between radios in a group */
+.vertical :not(:first-child).optionWrapper {
+  margin-top: 12px;
+}
+
+.selectionAreaAlways.vertical :not(:first-child).optionWrapper {
+  margin-top: 6px;
+}
+
+.selectionAreaAlways.horizontal :not(:first-child).optionWrapper {
+  margin-left: 6px;
+}
+
+.selectionAreaHover.vertical :not(:first-child).optionWrapper {
+  margin-top: 6px;
+}
+
+.selectionAreaHover.horizontal :not(:first-child).optionWrapper {
+  margin-left: 6px;
+}
+
+.disabled .radio {
+  color: value(D10-30);
+  border-color: value(D10-30);
+  background-color: value(D10-05);
+}
+
+.disabled.checked .radio::after {
+  background-color: value(D10-30);
+}
+
+.radio::after {
+  content: '';
+  display: block;
+  border-radius: 50%;
+  width: 10px;
+  height: 10px;
+  top: 0;
+  left: 0;
+  margin: 2px;
+}
+
+.checked:not(.disabled) .radioButtonChecked::after {
+  background-color: value(B10);
+}
+
+.radio:active::after {
+  background-color: value(B20);
+}
+
+.radioButtonWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+:global(.rtl) .optionWrapper {
+  direction: rtl;
+}
+
+:global(.rtl) .horizontal .radioWrapper > label {
+  margin-right: 0;
+  margin-left: 20px;
+}
+
+:global(.rtl) .children {
+  padding-left: 0;
+  padding-right: 12px;
+}
+
+:global(.rtl) .selectionAreaHover .radioButtonWrapper {
+  padding: 12px 16px 12px 0;
+}
+
+:global(.rtl) .selectionAreaHover .children {
+  padding: 12px 12px 12px 0;
+}
+
+:global(.rtl) .selectionAreaAlways .radioButtonWrapper {
+  padding: 12px 16px 12px 0;
+}
+
+:global(.rtl) .selectionAreaAlways .children {
+  padding: 12px 12px 12px 0;
+}
+
+/* Selection Area */
+.selectionAreaAlways .radioWrapper {
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.selectionAreaAlways .radioWrapper:not(.disabled).checked {
+  background-color: value(B40);
+}
+
+.selectionAreaAlways .radioButtonWrapper {
+  padding: 12px 0 12px 16px;
+}
+
+.selectionAreaAlways .children {
+  padding: 12px 0 12px 12px;
+}
+
+.selectionAreaAlways :not(.disabled):not(.checked).radioWrapper:hover {
+  background-color: value(B50);
+}
+
+.selectionAreaHover .radioWrapper {
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.selectionAreaHover .radioWrapper:not(.disabled).checked {
+  background-color: value(B40);
+}
+
+.selectionAreaHover .radioButtonWrapper {
+  padding: 12px 0 12px 16px;
+}
+
+.selectionAreaHover .children {
+  padding: 12px 0 12px 12px;
+}
+
+.selectionAreaHover :not(.disabled):not(.checked).radioWrapper:hover {
+  background-color: value(B50);
+}
+
+.selectionAreaAlways :not(.disabled).radioWrapper {
+  background-color: value(B60);
+}
+
+.content {
+  margin-top: 6px;
+}
