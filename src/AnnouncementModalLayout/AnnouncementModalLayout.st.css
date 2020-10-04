@@ -1,0 +1,52 @@
+:import {
+  -st-from: "../Foundation/stylable/spacing.st.css";
+  -st-named: spacing12, spacing18, spacing24, spacing30, spacing42, spacing48, spacing78;
+}
+
+:import {
+  -st-from: "../BaseModalLayout/BaseModalLayout.st.css";
+  -st-named: root as BaseModalLayout, Header, Content, Footer, Footnote, Illustration
+}
+
+.announcementModalLayout {
+  -st-extends: BaseModalLayout;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  box-sizing: border-box;
+  padding-top: value(spacing48);
+  width: 600px;
+}
+
+.announcementModalLayout .link {
+  margin-top: value(spacing18);
+}
+
+.announcementModalLayout .bottomSpacing {
+  width: 100%;
+  height: value(spacing48);
+}
+
+/* Overriding of BaseModalLayout Blocks*/
+.announcementModalLayout Illustration {
+  padding: 0 value(spacing78);
+  margin-bottom: value(spacing30);
+}
+
+.announcementModalLayout Header {
+  padding: 0 value(spacing78);
+  margin-bottom: value(spacing12);
+}
+
+.announcementModalLayout Content {
+  padding: 0 value(spacing78);
+}
+
+.announcementModalLayout Footer::innerContent {
+  padding: value(spacing42) value(spacing78) 0 value(spacing78);
+}
+
+.announcementModalLayout Footnote::innerContent {
+  padding-right: value(spacing78);
+  padding-left: value(spacing78);
+}

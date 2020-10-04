@@ -1,0 +1,59 @@
+import * as React from 'react';
+import AnnouncementModalLayout from '..';
+import CustomModalLayout from '../../CustomModalLayout';
+
+function baseModalLayoutWithMandatoryProps() {
+  return <AnnouncementModalLayout children="" />;
+}
+
+function baseModalLayoutWithAllProps() {
+  return (
+    <AnnouncementModalLayout
+      className="cn"
+      dataHook="dh"
+      theme="standard"
+      onCloseButtonClick={() => {}}
+      illustration={<div />}
+      illustrationSize="small"
+      title="title"
+      titleAppearance="H1"
+      subtitle="subtitle"
+      content={<div />}
+      children={<div />}
+      contentMaxHeight={20}
+      contentHideDividers
+      onContentScrollPositionChanged={() => {}}
+      actionsSize="small"
+      showFooterDivider
+      primaryButtonText="primaryButtonText"
+      primaryButtonProps={{
+        as: 'a',
+        className: 'cls',
+        disabled: true,
+        fullWidth: true,
+        prefixIcon: <div />,
+        priority: 'primary',
+        skin: 'dark',
+        size: 'small',
+        suffixIcon: <div />,
+      }}
+      primaryButtonOnClick={() => {}}
+      secondaryButtonText="secondaryButtonText"
+      secondaryButtonProps={{
+        as: 'a',
+        className: 'cls',
+        disabled: true,
+        fullWidth: true,
+        prefixIcon: <div />,
+        skin: 'dark',
+        size: 'small',
+        suffixIcon: <div />,
+      }}
+      secondaryButtonOnClick={() => {}}
+      sideActions={<div />}
+      footnote={<div />}
+      linkText="lt"
+      linkOnClick={() => {}}
+    />
+  );
+}

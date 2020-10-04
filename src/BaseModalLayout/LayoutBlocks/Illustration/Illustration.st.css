@@ -1,0 +1,13 @@
+.root {
+  -st-states: illustrationSize(enum(small, large));
+}
+
+.root:illustrationSize(small) .imageWrapper {
+  width: 120px;
+  height: 120px;
+}
+
+.root:illustrationSize(large) .imageWrapper{
+  width: 300px;
+  height: 200px;
+}

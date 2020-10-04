@@ -1,0 +1,61 @@
+:import {
+  -st-from: "../Foundation/stylable/colors.st.css";
+  -st-named: D80;
+}
+
+:import {
+  -st-from: "../Foundation/stylable/spacing.st.css";
+  -st-named: spacing06, spacing18, spacing24, spacing30, spacing42;
+}
+
+:import {
+  -st-from: "../BaseModalLayout/BaseModalLayout.st.css";
+  -st-named: root as BaseModalLayout, Header, Content, Footnote, Illustration
+}
+
+.root {
+  -st-extends: BaseModalLayout;
+  -st-states: hasIllustration;
+  width: 510px;
+}
+
+.mainContainer {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.root:hasIllustration {
+  width: 630px;
+}
+
+/* Overriding of BaseModalLayout Blocks*/
+.root Header {
+  padding: value(spacing24) value(spacing42) value(spacing18) value(spacing30);
+}
+
+.root Content {
+  padding-left: value(spacing30);
+  flex: 1;
+}
+
+.root:not(:hasIllustration) Content {
+  padding-left: 0;
+}
+
+.root Content::innerContent {
+  padding-bottom: value(spacing06);
+  padding-right: value(spacing30);
+}
+
+.root:not(:hasIllustration) Content::innerContent {
+  padding: 0 value(spacing30);
+}
+
+.root Footnote::innerContent {
+  justify-content: flex-start;
+}
+
+.root Illustration {
+  margin: value(spacing24) 0 0 value(spacing30);
+}

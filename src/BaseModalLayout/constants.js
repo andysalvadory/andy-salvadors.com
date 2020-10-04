@@ -1,0 +1,16 @@
+export const dataHooks = {
+  baseModalLayout: 'baseModalLayout',
+  closeButton: 'baseModalLayout-close-button',
+  header: 'baseModalLayout-header',
+  headerTitle: 'baseModalLayout-title',
+  headerSubtitle: 'baseModalLayout-subtitle',
+  content: 'baseModalLayout-content',
+  contentWrapper: 'baseModalLayout-content-wrapper',
+  footer: 'baseModalLayout-footer',
+  footerDivider: 'baseModalLayout-footer-divider',
+  footerSideActions: 'baseModalLayout-side-actions',
+  footerPrimaryButton: 'baseModalLayout-primary-button',
+  footerSecondaryButton: 'baseModalLayout-secondary-button',
+  footnote: 'baseModalLayout-footnote',
+  illustration: 'baseModalLayout-illustration',
+};

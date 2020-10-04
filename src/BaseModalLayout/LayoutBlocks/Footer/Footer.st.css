@@ -1,0 +1,51 @@
+:import {
+  -st-from: "../../../Foundation/stylable/spacing.st.css";
+  -st-named: spacing12;
+}
+
+.root {
+  -st-states: showDivider;
+}
+
+.innerContent {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 30px;
+}
+
+.root:not(:showDivider) .divider {
+  opacity: 0;
+  transition: opacity 100ms linear;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+  flex-shrink: 0;
+}
+
+.actions > :first-of-type:not(:last-of-type) {
+  margin-right: value(spacing12);
+}
+
+.sideActions {
+  margin-right: value(spacing12);
+}
+
+/* rtl */
+:global(.rtl) .actions {
+  margin-left: 0;
+  margin-right: auto;
+}
+
+:global(.rtl) .actions > :first-of-type:not(:last-of-type) {
+  margin-left: value(spacing12);
+  margin-right: 0;
+}
+
+:global(.rtl) .sideActions {
+  margin-left: value(spacing12);
+  margin-right: 0;
+}

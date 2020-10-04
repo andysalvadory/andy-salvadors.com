@@ -1,0 +1,27 @@
+:import {
+  -st-from: "../Foundation/stylable/spacing.st.css";
+  -st-named: spacing24, spacing30, spacing42;
+}
+
+:import {
+  -st-from: "../BaseModalLayout/BaseModalLayout.st.css";
+  -st-named: root as BaseModalLayout, Header, Content, Footnote
+}
+
+.root {
+  -st-extends: BaseModalLayout;
+  -st-states: removeContentPadding;
+  min-width: 510px;
+}
+
+.root:not(:removeContentPadding) Content::innerContent {
+  padding: 0 value(spacing30);
+}
+
+.root Header {
+  padding: value(spacing24) value(spacing42) value(spacing24) value(spacing30);
+}
+
+.root Footnote::innerContent {
+  justify-content: flex-start;
+}
