@@ -1,0 +1,425 @@
+{
+  "Accordion": {
+    "path": "src/Accordion"
+  },
+  "AddItem": {
+    "path": "src/AddItem"
+  },
+  "AutoComplete": {
+    "path": "src/AutoComplete"
+  },
+  "Avatar": {
+    "path": "src/Avatar"
+  },
+  "Badge": {
+    "path": "src/Badge"
+  },
+  "BadgeSelect": {
+    "path": "src/BadgeSelect"
+  },
+  "BadgeSelectItemBuilder": {
+    "path": "src/BadgeSelectItemBuilder",
+    "missingFiles": [
+      "docs/index.story.js"
+    ]
+  },
+  "Box": {
+    "path": "src/Box"
+  },
+  "Breadcrumbs": {
+    "path": "src/Breadcrumbs"
+  },
+  "Button": {
+    "path": "src/Button"
+  },
+  "Calendar": {
+    "path": "src/Calendar"
+  },
+  "CalendarPanel": {
+    "path": "src/CalendarPanel"
+  },
+  "CalendarPanelFooter": {
+    "path": "src/CalendarPanelFooter"
+  },
+  "Card": {
+    "path": "src/Card"
+  },
+  "CardGalleryItem": {
+    "path": "src/CardGalleryItem"
+  },
+  "Carousel": {
+    "path": "src/Carousel"
+  },
+  "Checkbox": {
+    "path": "src/Checkbox"
+  },
+  "CircularProgressBar": {
+    "path": "src/CircularProgressBar"
+  },
+  "CloseButton": {
+    "path": "src/CloseButton"
+  },
+  "Collapse": {
+    "path": "src/Collapse"
+  },
+  "ColorInput": {
+    "path": "src/ColorInput"
+  },
+  "ColorPicker": {
+    "path": "src/ColorPicker"
+  },
+  "ContactItemBuilder": {
+    "path": "src/ContactItemBuilder",
+    "missingFiles": [
+      "docs/index.story.js"
+    ]
+  },
+  "CounterBadge": {
+    "path": "src/CounterBadge"
+  },
+  "DateInput": {
+    "path": "src/DateInput"
+  },
+  "DatePicker": {
+    "path": "src/DatePicker"
+  },
+  "Dropdown": {
+    "path": "src/Dropdown"
+  },
+  "DropdownBase": {
+    "path": "src/DropdownBase"
+  },
+  "DropdownLayout": {
+    "path": "src/DropdownLayout",
+    "missingFiles": [
+      "docs/index.story.js"
+    ]
+  },
+  "EditableSelector": {
+    "path": "src/EditableSelector"
+  },
+  "EditableTitle": {
+    "path": "src/EditableTitle"
+  },
+  "EmptyState": {
+    "path": "src/EmptyState"
+  },
+  "EndorseContentLayout": {
+    "path": "src/EndorseContentLayout",
+    "missingFiles": [
+      "docs/index.story.js"
+    ]
+  },
+  "FilePicker": {
+    "path": "src/FilePicker"
+  },
+  "FloatingHelper": {
+    "path": "src/FloatingHelper"
+  },
+  "FloatingNotification": {
+    "path": "src/FloatingNotification"
+  },
+  "FormField": {
+    "path": "src/FormField"
+  },
+  "GenericModalLayout": {
+    "path": "src/GenericModalLayout"
+  },
+  "GoogleAddressInput": {
+    "path": "src/GoogleAddressInput"
+  },
+  "GooglePreview": {
+    "path": "src/GooglePreview"
+  },
+  "Grid": {
+    "path": "src/Grid",
+    "missingFiles": [
+      "docs/index.story.js"
+    ]
+  },
+  "Heading": {
+    "path": "src/Heading"
+  },
+  "Highlighter": {
+    "path": "src/Highlighter"
+  },
+  "IconButton": {
+    "path": "src/IconButton"
+  },
+  "ToggleButton": {
+    "path": "src/ToggleButton"
+  },
+  "ImageViewer": {
+    "path": "src/ImageViewer"
+  },
+  "Input": {
+    "path": "src/Input"
+  },
+  "InputArea": {
+    "path": "src/InputArea"
+  },
+  "InputWithOptions": {
+    "path": "src/InputWithOptions"
+  },
+  "Layout": {
+    "path": "src/Layout",
+    "missingFiles": [
+      "Layout.js"
+    ]
+  },
+  "LinearProgressBar": {
+    "path": "src/LinearProgressBar"
+  },
+  "ListItemAction": {
+    "path": "src/ListItemAction"
+  },
+  "Loader": {
+    "path": "src/Loader"
+  },
+  "Modal": {
+    "path": "src/Modal"
+  },
+  "ModalSelectorLayout": {
+    "path": "src/ModalSelectorLayout"
+  },
+  "MultiSelect": {
+    "path": "src/MultiSelect"
+  },
+  "MultiSelectCheckbox": {
+    "path": "src/MultiSelectCheckbox"
+  },
+  "NestableList": {
+    "path": "src/NestableList",
+    "missingFiles": [
+      "docs"
+    ]
+  },
+  "NoBorderInput": {
+    "path": "src/NoBorderInput"
+  },
+  "Notification": {
+    "path": "src/Notification"
+  },
+  "NumberInput": {
+    "path": "src/NumberInput"
+  },
+  "Page": {
+    "path": "src/Page"
+  },
+  "PageHeader": {
+    "path": "src/PageHeader"
+  },
+  "Popover": {
+    "path": "src/Popover"
+  },
+  "Proportion": {
+    "path": "src/Proportion"
+  },
+  "RadioGroup": {
+    "path": "src/RadioGroup"
+  },
+  "Range": {
+    "path": "src/Range"
+  },
+  "RichTextInputArea": {
+    "path": "src/RichTextInputArea"
+  },
+  "Search": {
+    "path": "src/Search"
+  },
+  "SectionHelper": {
+    "path": "src/SectionHelper"
+  },
+  "SegmentedToggle": {
+    "path": "src/SegmentedToggle"
+  },
+  "Selector": {
+    "path": "src/Selector",
+    "missingFiles": [
+      "docs"
+    ]
+  },
+  "Sidebar": {
+    "path": "src/Sidebar"
+  },
+  "SidebarSectionTitle": {
+    "path": "src/SidebarSectionTitle"
+  },
+  "Skeleton": {
+    "path": "src/Skeleton"
+  },
+  "Slider": {
+    "path": "src/Slider"
+  },
+  "SocialPreview": {
+    "path": "src/SocialPreview"
+  },
+  "SortableList": {
+    "path": "src/SortableList",
+    "missingFiles": [
+      "docs"
+    ]
+  },
+  "Stepper": {
+    "path": "src/Stepper"
+  },
+  "Swatches": {
+    "path": "src/Swatches"
+  },
+  "Table": {
+    "path": "src/Table"
+  },
+  "TableActionCell": {
+    "path": "src/TableActionCell"
+  },
+  "TableToolbar": {
+    "path": "src/TableToolbar",
+    "missingFiles": [
+      "docs/index.story.js"
+    ]
+  },
+  "Tabs": {
+    "path": "src/Tabs"
+  },
+  "Tag": {
+    "path": "src/Tag"
+  },
+  "Text": {
+    "path": "src/Text"
+  },
+  "TextButton": {
+    "path": "src/TextButton"
+  },
+  "Thumbnail": {
+    "path": "src/Thumbnail"
+  },
+  "TimeInput": {
+    "path": "src/TimeInput"
+  },
+  "ToggleSwitch": {
+    "path": "src/ToggleSwitch"
+  },
+  "Tooltip": {
+    "path": "src/Tooltip"
+  },
+  "SidebarSectionItem": {
+    "path": "src/SidebarSectionItem"
+  },
+  "SidebarDivider": {
+    "path": "src/SidebarDivider"
+  },
+  "SidebarBackButton": {
+    "path": "src/SidebarBackButton"
+  },
+  "SidebarHeader": {
+    "path": "src/SidebarHeader"
+  },
+  "ModalPreviewLayout": {
+    "path": "src/ModalPreviewLayout"
+  },
+  "StatisticsWidget": {
+    "path": "src/StatisticsWidget"
+  },
+  "ComposerHeader": {
+    "path": "src/ComposerHeader"
+  },
+  "FillPreview": {
+    "path": "src/FillPreview"
+  },
+  "FillButton": {
+    "path": "src/FillButton"
+  },
+  "BarChart": {
+    "path": "src/BarChart"
+  },
+  "InputWithLabel": {
+    "path": "src/InputWithLabel"
+  },
+  "AutoCompleteWithLabel": {
+    "path": "src/AutoCompleteWithLabel"
+  },
+  "Divider": {
+    "path": "src/Divider"
+  },
+  "LabelledElement": {
+    "path": "src/LabelledElement"
+  },
+  "PreviewWidget": {
+    "path": "src/PreviewWidget"
+  },
+  "ModalMobileLayout": {
+    "path": "src/ModalMobileLayout"
+  },
+  "MediaOverlay": {
+    "path": "src/MediaOverlay"
+  },
+  "InfoIcon": {
+    "path": "src/InfoIcon"
+  },
+  "SocialButton": {
+    "path": "src/SocialButton"
+  },
+  "VerticalTabs": {
+    "path": "src/VerticalTabs"
+  },
+  "VerticalTabsItem": {
+    "path": "src/VerticalTabsItem"
+  },
+  "MobilePreviewWidget": {
+    "path": "src/MobilePreviewWidget"
+  },
+  "ListItemSection": {
+    "path": "src/ListItemSection"
+  },
+  "BrowserPreviewWidget": {
+    "path": "src/BrowserPreviewWidget"
+  },
+  "ListItemSelect": {
+    "path": "src/ListItemSelect"
+  },
+  "TimeTable": {
+    "path": "src/TimeTable"
+  },
+  "MarketingLayout": {
+    "path": "src/MarketingLayout"
+  },
+  "Palette": {
+    "path": "src/Palette"
+  },
+  "VariableInput": {
+    "path": "src/VariableInput"
+  },
+  "Image": {
+    "path": "src/Image"
+  },
+  "SidePanel": {
+    "path": "src/SidePanel"
+  },
+  "FontUpgrade": {
+    "path": "src/FontUpgrade"
+  },
+  "CustomModalLayout": {
+    "path": "src/CustomModalLayout"
+  },
+  "StatusIndicator": {
+    "path": "src/StatusIndicator"
+  },
+  "BaseModalLayout": {
+    "path": "src/BaseModalLayout",
+    "missingFiles": [
+      "docs"
+    ]
+  },
+  "MessageModalLayout": {
+    "path": "src/MessageModalLayout"
+  },
+  "AnnouncementModalLayout": {
+    "path": "src/AnnouncementModalLayout"
+  },
+  "PopoverMenu": {
+    "path": "src/PopoverMenu"
+  },
+  "Pagination": {
+    "path": "src/Pagination"
+  }
+}

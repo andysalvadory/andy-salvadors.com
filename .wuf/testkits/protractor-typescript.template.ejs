@@ -1,0 +1,13 @@
+<%
+  components
+  .filter(component => !component.noTestkit)
+  .filter(component => !component.noProtractorTestkit)
+  .filter(component => !component.manualExport)
+  .map(component => {
+    const camelName = utils.toCamel(component.name);
+    const testkitName = component.protractorTestkitExportName || camelName + 'TestkitFactory';
+%>
+export const <%= testkitName %>: any;<% }) %>
+
+
+

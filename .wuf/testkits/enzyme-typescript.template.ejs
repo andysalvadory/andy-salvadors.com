@@ -1,0 +1,62 @@
+import {ReactWrapper} from 'enzyme';
+import {BaseUniDriver} from 'wix-ui-test-utils/base-driver';
+import {BaseDriver} from 'wix-ui-test-utils/driver-factory';
+
+type EnzymeTestkitFactory<T extends BaseDriver> = (
+  params: EnzymeTestkitParams,
+) => T;
+
+type EnzymeUniTestkitFactory<T extends BaseUniDriver> = (
+  params: EnzymeTestkitParams,
+) => T;
+
+interface EnzymeTestkitParams {
+  wrapper: ReactWrapper;
+  dataHook: string;
+}
+
+type DeprecatedEnzymeTestkit = any;
+<%
+  const deprecated = [
+    'Draggable',
+    'FieldLabelAttributes',
+  ];
+
+  const defaultExport = [
+    'Avatar',
+  ]
+
+  const reactWrapper = [
+    'AddItem',
+    'Highlighter',
+    'ImageViewer',
+    'InputArea',
+    'MediaOverlay',
+    'MessageBoxFunctionalLayout',
+    'Modal',
+    'Table',
+    'TableActionCell'
+  ]
+
+  components
+    .filter(component => !component.noTestkit)
+    .filter(component => !component.manualExport)
+    .filter(component => !deprecated.includes(component.name))
+    .map(component => {
+      const isLegacy = component.enzymeLegacyTestkit;
+      const importName = component.name + (isLegacy ? 'Driver' : 'UniDriver')
+      const importPath = component.testkitPath || '../src/' + component.name + '/' + component.name + (isLegacy ? '.driver' : '.uni.driver')
+      const wrappedImport = defaultExport.includes(component.name) ? importName : '{' + importName + '}'
+      const exportName = utils.toCamel(component.name) + 'TestkitFactory'
+      const testkitType = isLegacy ? 'EnzymeTestkitFactory' : 'EnzymeUniTestkitFactory'
+%>
+import <%= wrappedImport %> from '<%= importPath %>';
+export const <%= exportName %>: <%= testkitType %><<%= importName %><%- reactWrapper.includes(component.name) ?  '<ReactWrapper>' : '' %>>;<% }) %>
+
+<%
+  components
+    .filter(component => deprecated.includes(component.name))
+    .map(component => {
+      const camelName = utils.toCamel(component.name)
+%>
+export const <%= camelName %>TestkitFactory: DeprecatedEnzymeTestkit;<% }) %>

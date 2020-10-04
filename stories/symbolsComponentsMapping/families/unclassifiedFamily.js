@@ -1,0 +1,1 @@
+/* Placeholder file when generating a new component */
