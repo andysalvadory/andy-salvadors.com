@@ -1,0 +1,49 @@
+import {BaseUniDriver} from 'wix-ui-test-utils/base-driver';
+import {BaseDriver} from 'wix-ui-test-utils/driver-factory';
+import {ReactWrapper} from 'enzyme';
+import AvatarDriver from '../src/Avatar/Avatar.uni.driver';
+import {BadgeDriver} from '../src/Badge/Badge.driver';
+import {BadgeSelectDriver} from '../src/BadgeSelect/BadgeSelect.driver';
+import {BoxDriver} from '../src/Box/Box.uni.driver';
+import {SocialButtonDriver} from '../src/SocialButton/SocialButton.uni.driver'
+import {TooltipDriver as TooltipUniDriver} from '../src/Tooltip/TooltipNext/Tooltip.uni.driver';
+import {TooltipDriver} from '../src/Tooltip/Tooltip.driver';
+import {InfoIconDriver} from '../src/InfoIcon/InfoIcon.uni.driver';
+
+declare namespace EnzymeTestkit {
+  type EnzymeTestkitFactory<T extends BaseDriver> = (
+    params: EnzymeTestkitParams
+  ) => T;
+
+  type EnzymeUniTestkitFactory<T extends BaseUniDriver> = (
+    params: EnzymeTestkitParams
+  ) => T;
+
+  interface EnzymeTestkitParams {
+    wrapper: ReactWrapper;
+    dataHook: string;
+  }
+<%
+  const typed = {
+    Avatar: 'EnzymeUniTestkitFactory<AvatarDriver>',
+    Badge: 'EnzymeTestkitFactory<BadgeDriver>',
+    BadgeSelect: 'EnzymeTestkitFactory<BadgeSelectDriver>',
+    Box: 'EnzymeUniTestkitFactory<BoxDriver>',
+    InfoIcon: 'EnzymeUniTestkitFactory<InfoIconDriver>',
+    SocialButton: 'EnzymeUniTestkitFactory<SocialButtonDriver>',
+  };
+
+  components
+  .filter(component => !component.noTestkit)
+  .filter(component => !component.manualExport)
+  .map(component => {
+    const camelName = utils.toCamel(component.name);
+    const testkitName = camelName + 'TestkitFactory';
+    const type = typed[component.name] || 'any';
+%>
+  export const <%= testkitName %>: <%- type %>;<% }) %>
+  export const tooltipTestkitFactory: EnzymeTestkitFactory<TooltipDriver>;
+  export const TooltipTestkit: EnzymeUniTestkitFactory<TooltipUniDriver>;
+}
+
+export = EnzymeTestkit;

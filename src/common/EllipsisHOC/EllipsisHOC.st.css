@@ -1,0 +1,17 @@
+:import {
+  -st-from: "wix-ui-core/dist/src/hocs/EllipsedTooltip/EllipsedTooltip.st.css";
+  -st-default: Ellipsis;
+}
+
+:import {
+  -st-from: "../../Tooltip/TooltipNext/Tooltip.st.css";
+  -st-default: Tooltip;
+}
+
+.root {
+  -st-extends: Ellipsis;
+  -st-mixin: Tooltip;
+  width: auto;
+  height: -moz-max-content;
+  height: -webkit-max-content;
+}

@@ -1,0 +1,51 @@
+:import {
+  -st-from: "./colors.st.css";
+  -st-named: D80;
+}
+
+:vars {
+  fontsFallback: '"Helvetica Neue", "Helvetica", "Arial", "メイリオ", "meiryo", "ヒラギノ角ゴ pro w3", "hiragino kaku gothic pro", "sans-serif"'
+}
+
+:vars {
+  fontUltraThin: '"HelveticaNeueW01-UltLt", "HelveticaNeueW02-UltLt", "HelveticaNeueW10-25UltL", value(fontsFallback)';
+  fontThin: '"HelveticaNeueW01-Thin", "HelveticaNeueW02-Thin", "HelveticaNeueW10-35Thin", value(fontsFallback)';
+  fontLight: '"HelveticaNeueW01-45Ligh", "HelveticaNeueW02-45Ligh", "HelveticaNeueW10-45Ligh", value(fontsFallback)';
+  fontRoman: '"HelveticaNeueW01-55Roma", "HelveticaNeueW02-55Roma", "HelveticaNeueW10-55Roma", value(fontsFallback)';
+  fontMedium: '"HelveticaNeueW01-65Medi", "HelveticaNeueW02-65Medi", "HelveticaNeueW10-65Medi", value(fontsFallback)';
+  fontBold: '"HelveticaNeueW01-75Bold", "HelveticaNeueW02-75Bold", "HelveticaNeueW10-75Bold", value(fontsFallback)';
+}
+
+.sizeMedium {
+  font-size: 16px;
+  line-height: 24px;
+}
+
+.sizeSmall {
+  font-size: 14px;
+  line-height: 18px;
+}
+
+.sizeTiny {
+  font-size: 12px;
+  line-height: 15px;
+}
+
+.weightThin {
+  font-family: value(fontLight);
+  font-weight: normal;
+}
+
+.weightNormal {
+  font-family: value(fontRoman);
+  font-weight: normal;
+}
+
+.weightBold {
+  font-family: value(fontMedium);
+  font-weight: normal;
+}
+
+.light {
+  color: value(D80);
+}

@@ -1,0 +1,173 @@
+:import {
+  -st-from: "wix-ui-core/dist/src/components/button-next/button-next.st.css";
+  -st-default: Button;
+}
+
+:import {
+  -st-from: "../Foundation/stylable/colors.st.css";
+  -st-named: B10, B20, B40, B50, D10, D20, D30, D55, D60, D80, F00;
+}
+
+.root {
+  -st-states: skin(enum(standard, inverted, dark)), selected, size(enum(medium, large)), textPlacement(enum(hidden, side, bottom));
+  cursor: pointer;
+}
+
+.button {
+  -st-states: skin(enum(standard, inverted, dark)), shape(enum(square, round)), selected, size(enum(medium, large)), textPlacement(enum(hidden, side, bottom));
+  -st-extends: Button;
+
+  min-width: 0;
+  padding: 0;
+
+  box-sizing: border-box;
+  text-align: center;
+
+  border: none;
+  outline: none;
+  transition: all 100ms linear;
+
+  background-color: transparent;
+}
+
+.button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: value(D80);
+  color: value(D10);
+}
+
+.root .text {
+  color: value(D10);
+}
+
+.root:textPlacement(side) .text {
+  margin-left: 12px;
+}
+
+.root:textPlacement(bottom) .text {
+  margin-top: 9px;
+}
+
+.root:textPlacement(hidden) .text {
+  display: none;
+}
+
+.button:size(medium) {
+  width: 36px;
+  height: 36px;
+}
+
+.button:size(large) {
+  width: 42px;
+  height: 42px;
+}
+
+.button:shape(square) {
+  border-radius: 6px;
+}
+
+.button:shape(round) {
+  border-radius: 50%;
+  border: solid 1px value(D60);
+}
+
+.root:hover:not(:disabled) .text {
+  color: value(B10);
+}
+
+.root:hover:not(:disabled) .button {
+  background-color: value(D80);
+  color: value(B10);
+}
+
+.root:active:not(:disabled),
+.root:selected:not(:disabled) .button {
+  background-color: value(B40);
+  color: value(B20);
+}
+
+.root:active:hover:not(:disabled),
+.root:selected:hover:not(:disabled) .button {
+  background-color: value(B50);
+  color: value(B20);
+}
+
+.root:disabled .button {
+  background-color: value(D80);
+  color: value(D55);
+}
+
+.root:focus-visible .button {
+  box-shadow: 0 0 0 3px value(F00);
+}
+
+.root:textPlacement(side) {
+  display: flex;
+  align-items: center;
+}
+
+.root:textPlacement(bottom) {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Skin Inverted */
+
+.root:skin(inverted) .button {
+  background-color: value(D80);
+  color: value(D10);
+}
+
+.root:skin(inverted):hover:not(:disabled) .button {
+  background-color: value(D80);
+  color: value(D30);
+}
+
+.root:skin(inverted):active:not(:disabled),
+.root:skin(inverted):selected:not(:disabled) .button {
+  background-color: value(D10);
+  color: value(D80);
+}
+
+.root:skin(inverted):active:hover:not(:disabled),
+.root:skin(inverted):selected:hover:not(:disabled) .button {
+  background-color: value(D20);
+  color: value(D80);
+}
+
+.root:skin(inverted):disabled .button {
+  background-color: value(D80);
+  color: value(D55);
+}
+
+/* Skin Dark */
+
+.root:skin(dark) .button {
+  background-color: value(D80);
+  color: value(D10);
+}
+
+.root:skin(dark):hover:not(:disabled) .button {
+  background-color: value(D80);
+  color: value(D30);
+}
+
+.root:skin(dark):active:not(:disabled),
+.root:skin(dark):selected:not(:disabled) .button {
+  background-color: value(D10);
+  color: value(D80);
+}
+
+.root:skin(dark):active:hover:not(:disabled),
+.root:skin(dark):selected:hover:not(:disabled) .button {
+  background-color: value(D20);
+  color: value(D80);
+}
+
+.root:skin(dark):disabled .button {
+  background-color: value(D80);
+  color: value(D55);
+}

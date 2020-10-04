@@ -1,0 +1,121 @@
+@import '../common.scss';
+
+$suffixHorizontalPadding: 12px;
+$inlineLabelMinHeight: 36px;
+$childrenMargin: 6px;
+
+.root {
+  display: inline-flex;
+  flex-wrap: wrap;
+  font-size: initial;
+
+  .children {
+    margin: auto 0;
+  }
+
+  &.stretchContent {
+    display: flex;
+
+    .children {
+      flex-grow: 1;
+    }
+  }
+}
+
+.children {
+  flex: 0 0 100%;
+  max-width: 100%;
+
+  &.childrenWithInlineSuffixes {
+    flex: 0 0 auto;
+    display: flex;
+    flex-direction: column;
+
+    .counter {
+      margin-bottom: $childrenMargin;
+    }
+  }
+
+  &.stretchContent {
+    flex-grow: 1;
+  }
+}
+
+.minLabelHeight {
+  min-height: $inlineLabelMinHeight;
+  line-height: $inlineLabelMinHeight;
+}
+
+.labelFromTop {
+  .label {
+    display: flex;
+    align-items: center;
+    flex: 1 0 auto;
+    max-width: 100%;
+  }
+
+  .children {
+    padding-top: $childrenMargin;
+  }
+}
+
+.labelFromRight {
+  flex-direction: row;
+
+  .childrenWithInlineSuffixes {
+    padding-right: $suffixHorizontalPadding;
+  }
+}
+
+.labelFromLeft {
+  flex-direction: row-reverse;
+
+  .childrenWithInlineSuffixes {
+    padding-left: $suffixHorizontalPadding;
+  }
+}
+
+@include withRTL {
+  .labelFromRight {
+    .childrenWithInlineSuffixes {
+      padding-right: 0;
+      padding-left: $suffixHorizontalPadding;
+    }
+  }
+
+  .labelFromLeft {
+    .childrenWithInlineSuffixes {
+      padding-left: 0;
+      padding-right: $suffixHorizontalPadding;
+    }
+  }
+}
+
+.asterisk {
+  display: inline-block;
+  color: $B20;
+  font-family: $FontLight;
+  font-size: 22px;
+  margin-left: 6px;
+  margin-top: -4px;
+}
+
+.infoIcon {
+  margin-left: 3px;
+}
+
+.suffixesInline {
+  display: flex;
+  align-items: center;
+
+  &.inlineWithCharCounter {
+    $charCounterHeight: 18px;
+
+    // Aligns the inline label on the top in case the counter appears
+    margin-top: $charCounterHeight + $childrenMargin;
+  }
+}
+
+.counter {
+  margin-left: auto;
+}
