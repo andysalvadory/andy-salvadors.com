@@ -1,0 +1,80 @@
+:vars {
+  modalBoxPadding: 48px;
+}
+
+:import {
+  -st-from: "../Foundation/stylable/colors.st.css";
+  -st-named: B50, R50, P50, D80;
+}
+
+:import {
+  -st-from: "../Foundation/stylable/border.st.css";
+  -st-named: radius08;
+}
+
+:import {
+  -st-from: "../Foundation/stylable/shadows.st.css";
+  -st-named: shadow40;
+}
+
+:import {
+  -st-from: "../Foundation/stylable/spacing.st.css";
+  -st-named: spacing18, spacing24, spacing30, spacing42;
+}
+
+:import {
+  -st-from: "../BaseModalLayout/BaseModalLayout.st.css";
+  -st-named: buttons, root as baseModal, actions, header, contentWrapper, footnote;
+}
+
+
+.root {
+  -st-states: theme(enum(standard, premium, destructive));;
+  background-color: value(D80);
+  position: relative;
+  display: flex;
+  max-height: calc(100% - (value(modalBoxPadding) * 2) );
+  border-radius: value(radius08);
+  box-shadow: value(shadow40);
+  overflow: hidden;
+}
+.illustrationContainer {
+  width: 180px;
+  min-height: 180px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.root:theme(standard) .illustrationContainer {
+  background-color: value(B50);
+}
+.root:theme(destructive) .illustrationContainer {
+  background-color: value(R50);
+}
+.root:theme(premium) .illustrationContainer {
+  background-color: value(P50);
+}
+
+.imageWrapper {
+  width: 120px;
+  height: 120px;
+  padding: value(spacing30);
+}
+
+.messageContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.root .header {
+  padding: value(spacing24) value(spacing42) value(spacing18) value(spacing30);
+}
+
+.root .contentWrapper {
+  padding: 0 value(spacing30);
+}
+
+.root .footnote {
+  display: block;
+  padding-left: value(spacing30);
+}

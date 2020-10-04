@@ -1,0 +1,123 @@
+@import '../common';
+@import '../../src/Typography/Typography.scss';
+
+$sliderPadding: 4.5px;
+$sliderRailHeight: 3px;
+$sliderMarginTop: 9px;
+$sliderMarginBottom: 6px;
+$sliderMarkLine: 6px;
+$sliderMarkTextMarginTop: 12px;
+$sliderMarkTextSize: 18px;
+
+:global(.wix-style-react-slider) :global(.rc-slider) {
+  position: relative;
+  height: calc(#{$sliderRailHeight} + 2 * #{$sliderPadding});
+  width: 100%;
+  touch-action: none;
+  box-sizing: border-box;
+  margin: $sliderMarginTop 0 $sliderMarginBottom 0;
+
+  &:not(:global(.rc-slider-disabled)){
+    cursor: pointer;
+  }
+
+  // extending clickable area
+  &::before {
+    content: '';
+    position: absolute;
+    top: -12px;
+    bottom: -12px;
+    left: 0;
+    right: 0;
+  }
+}
+
+:global(.wix-style-react-slider) :global(.rc-slider-with-marks) {
+  height: calc(#{$sliderRailHeight} + 2 * #{$sliderPadding} + #{$sliderMarginBottom} + #{$sliderMarkLine} + #{$sliderMarkTextMarginTop} +  #{$sliderMarkTextSize});
+  margin-bottom: 0;
+
+  // extending clickable area
+  &::before {
+    content: '';
+    position: absolute;
+    top: -12px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+  }
+}
+
+:global(.wix-style-react-slider) :global(.rc-slider-rail) {
+  position: absolute;
+  width: 100%;
+  background-color: $B40;
+  height: $sliderRailHeight;
+  border-radius: 10px;
+  margin: $sliderPadding 0;
+}
+
+:global(.wix-style-react-slider) :global(.rc-slider-track) {
+  position: absolute;
+  left: 0;
+  background-color: $B10;
+  height: $sliderRailHeight;
+  border-radius: 10px;
+  margin: $sliderPadding 0;
+  //transition: width 80ms; /* Animation */
+}
+
+:global(.wix-style-react-slider) :global(.rc-slider-mark) {
+  position: absolute;
+  top: calc(#{$sliderRailHeight} + #{$sliderMarkLine} + #{$sliderPadding} + #{$sliderMarginBottom});
+  left: 0;
+  width: 100%;
+}
+
+:global(.wix-style-react-slider) :global(.rc-slider-mark-text) {
+  position: absolute;
+  display: inline-block;
+  vertical-align: middle;
+  text-align: center;
+  color: $D10;
+}
+
+:global(.wix-style-react-slider) :global(.rc-slider-mark-text-active) {
+  color: $D10;
+}
+
+:global(.wix-style-react-slider) :global(.rc-slider-step) {
+  position: absolute;
+  width: 100%;
+  height: $sliderRailHeight;
+  background: transparent;
+  margin: $sliderPadding 0;
+}
+
+:global(.wix-style-react-slider) :global(.rc-slider-disabled .rc-slider-rail) {
+  background-color: $D10-10;
+}
+
+:global(.wix-style-react-slider) :global(.rc-slider-disabled .rc-slider-track) {
+  background-color: $D50;
+}
+
+:global(.wix-style-react-slider) :global(.rc-slider-disabled .rc-slider-handle) {
+  color: $D50;
+}
+
+.mark-line {
+  position: relative;
+  margin: auto;
+  width: 1px;
+  height: $sliderMarkLine;
+  background-color: $D50;
+}
+
+.mark-value {
+  position: relative;
+  margin-top: $sliderMarkTextMarginTop;
+
+  .mark-text {
+    @extend .text, .sizeSmall, .weightThin;
+  }
+}
