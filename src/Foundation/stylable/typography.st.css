@@ -1,0 +1,119 @@
+/* Fonts */
+:vars {
+  fontsFallback: '"Helvetica Neue", "Helvetica", "Arial", "メイリオ", "meiryo", "ヒラギノ角ゴ pro w3", "hiragino kaku gothic pro", "sans-serif"';
+  helveticaNueu45: 'HelveticaNeueW01-45Ligh, HelveticaNeueW02-45Ligh';
+  helveticaNueu55: 'HelveticaNeueW01-55Roma, HelveticaNeueW02-55Roma';
+  helveticaNueu65: 'HelveticaNeueW01-65Medi, HelveticaNeueW02-65Medi';
+  helveticaNueu75: 'HelveticaNeueW01-75Bold, HelveticaNeueW02-75Bold';
+}
+
+.font {
+  font-family: family, value(fontsFallback); /* IE11 */
+  font-family: var(--wsr-theme-font-family, --wsr-font-family), var(--wsr-font-family, value(family)), value(fontsFallback);
+}
+
+/* Sizes */
+.tiny {
+  font-size: calc(var(--wsr-theme-font-size, 100) * 12px / 100);
+  line-height: 15px;
+}
+
+.small {
+  font-size: calc(var(--wsr-theme-font-size, 100) * 14px / 100);
+  line-height: 18px;
+}
+
+.medium {
+  font-size: calc(var(--wsr-theme-font-size, 100) * 16px / 100);
+  line-height: 24px;
+}
+
+/* Weights */
+.thin {
+  font-weight: 400; /* IE11 */
+  font-weight: var(--wsr-font-weight-thin, 400);
+}
+
+.normal {
+  font-weight: 400; /* IE11 */
+  font-weight: var(--wsr-font-weight-normal, 400);
+}
+
+.bold {
+  font-weight: 400; /* IE11 */
+  font-weight: var(--wsr-font-weight-bold, 400);
+}
+
+/* Typography API */
+.text-tiny-thin {
+  -st-mixin: tiny, thin, font(family value(helveticaNueu55));
+}
+
+.text-tiny-normal {
+  -st-mixin: tiny, normal, font(family value(helveticaNueu65));
+}
+
+.text-tiny-bold {
+  -st-mixin: tiny, bold, font(family value(helveticaNueu75));
+}
+
+.text-small-thin {
+  -st-mixin: small, thin, font(family value(helveticaNueu45));
+}
+
+.text-small-normal {
+  -st-mixin: small, normal, font(family value(helveticaNueu55));
+}
+
+.text-small-bold {
+  -st-mixin: small, bold, font(family value(helveticaNueu65));
+}
+
+.text-medium-thin {
+  -st-mixin: medium, thin, font(family value(helveticaNueu45));
+}
+
+.text-medium-normal {
+  -st-mixin: medium, normal, font(family value(helveticaNueu55));
+}
+
+.text-medium-bold {
+  -st-mixin: medium, bold, font(family value(helveticaNueu65));
+}
+
+.heading-h1 {
+  -st-mixin: font(family value(helveticaNueu65));
+  font-size: calc(var(--wsr-theme-font-size, 100) * 36px / 100);
+  line-height: 48px;
+}
+
+.heading-h2 {
+  -st-mixin: font(family value(helveticaNueu65));
+  font-size: calc(var(--wsr-theme-font-size, 100) * 28px / 100);
+  line-height: 36px;
+}
+
+.heading-h3 {
+  -st-mixin: font(family value(helveticaNueu55));
+  font-size: calc(var(--wsr-theme-font-size, 100) * 20px / 100);
+  line-height: 24px;
+}
+
+.heading-h4 {
+  -st-mixin: font(family value(helveticaNueu55));
+  font-size: calc(var(--wsr-theme-font-size, 100) * 18px / 100);
+  line-height: 24px;
+}
+
+.heading-h5 {
+  -st-mixin: font(family value(helveticaNueu65));
+  font-size: calc(var(--wsr-theme-font-size, 100) * 12px / 100);
+  line-height: 24px;
+}
+
+.heading-h6 {
+  -st-mixin: font(family value(helveticaNueu65));
+  font-size: calc(var(--wsr-theme-font-size, 100) * 10px / 100);
+  line-height: 18px;
+}
+

@@ -1,0 +1,57 @@
+.root {
+  -st-states: size(enum(small, medium, large)), inverted, withActions;
+  padding-top: 6px;
+}
+
+.contentContainer {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.root:not(:inverted) .content {
+  padding-left: 18px;
+}
+
+:global([dir="rtl"]) .root:not(:inverted) .content {
+  padding-right: 18px;
+  padding-left: 0;
+}
+
+.root:not(:inverted):size(large) .content {
+  padding-left: 30px;
+}
+
+:global([dir="rtl"]) .root:not(:inverted):size(large) .content {
+  padding-right: 30px;
+  padding-left: 0;
+}
+
+.title {
+  padding-bottom: 18px;
+}
+
+.root:size(small) .title {
+  padding-bottom: 12px;
+}
+
+.root:withActions .description {
+  padding-bottom: 36px;
+}
+
+.root:size(small):withActions .description {
+  padding-bottom: 24px;
+}
+
+.imageContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+.imagePlaceholder {
+  background-color: #d8d8d8;
+  height: 100%;
+}

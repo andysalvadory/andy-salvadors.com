@@ -1,0 +1,50 @@
+:import {
+  -st-from: '../Foundation/stylable/colors.st.css';
+  -st-named: R00, R05, R10, R20, R30, R40, R50, R60, G00, G05, G10, G20, G30, G40, G50, G60;
+}
+
+:import {
+  -st-from: "../Foundation/stylable/mixins/calc_rgba";
+  -st-default: calc_rgba;
+}
+
+.root {
+  -st-states: theme(enum(roses, grass));
+  --wsr-theme-font-family: Helvetica Neue;
+}
+
+.root:theme(roses) {
+  --wsr-theme-color-00: value(R00);
+  --wsr-theme-color-05: value(R05);
+  --wsr-theme-color-10: value(R10);
+  --wsr-theme-color-20: value(R20);
+  --wsr-theme-color-30: value(R30);
+  --wsr-theme-color-40: value(R40);
+  --wsr-theme-color-50: value(R50);
+  --wsr-theme-color-60: value(R60);
+  --wsr-theme-color-00-24: calc_rgba(value(R00), 0.24);
+  --wsr-theme-color-00-42: calc_rgba(value(R00), 0.42);
+  --wsr-theme-color-30-20: calc_rgba(value(R30), 0.2);
+  --wsr-theme-font-family: cursive;
+  --wsr-theme-font-size: 125;
+}
+
+.root:theme(grass) {
+  --wsr-theme-color-00: value(G00);
+  --wsr-theme-color-05: value(G05);
+  --wsr-theme-color-10: value(G10);
+  --wsr-theme-color-20: value(G20);
+  --wsr-theme-color-30: value(G30);
+  --wsr-theme-color-40: value(G40);
+  --wsr-theme-color-50: value(G50);
+  --wsr-theme-color-60: value(G60);
+  --wsr-theme-color-00-24: calc_rgba(value(G00), 0.24);
+  --wsr-theme-color-00-42: calc_rgba(value(G00), 0.42);
+  --wsr-theme-color-30-20: calc_rgba(value(G30), 0.2);
+  --wsr-theme-font-family: Comic Sans MS;
+  --wsr-theme-font-size: 115;
+  --wsr-theme-radius: 0;
+  --wsr-theme-borders-top: transparent;
+  --wsr-theme-borders-left: transparent;
+  --wsr-theme-borders-right: transparent;
+}

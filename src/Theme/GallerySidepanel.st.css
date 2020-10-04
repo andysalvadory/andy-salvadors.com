@@ -1,0 +1,40 @@
+.root {
+  background-color: white;
+  width: 400px;
+}
+
+.header {
+  padding: 15px;
+}
+
+.body {
+}
+
+.layouts {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 18px 0;
+}
+
+.layout {
+  width: 80px;
+  height: 80px;
+  margin: auto;
+}
+
+.sliderWrapper {
+  margin: 10px 20px;
+}
+
+.sliderWrapper input {
+  width: 35px;
+}
+
+.slider {
+  flex: 1 1 auto;
+  margin-right: 20px;
+}
+
+.buttons {
+  justify-content: flex-end;
+}

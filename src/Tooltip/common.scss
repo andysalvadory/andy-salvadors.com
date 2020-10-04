@@ -1,0 +1,6 @@
+@import './../colors.scss';
+
+@mixin popoverTheme {
+  box-shadow: $Shadow30;
+  border-radius: calc(var(--wsr-theme-radius, 100) * 8px / 100);
+}

@@ -1,0 +1,89 @@
+@import '../common';
+@import '../../src/Typography/Typography.scss';
+
+:global(.wix-style-react-slider) :global(.rc-slider) {
+  position: relative;
+  height: 14px;
+  padding: 5px 0;
+  width: 100%;
+  touch-action: none;
+  box-sizing: border-box;
+}
+
+:global(.wix-style-react-slider) :global(.rc-slider-with-marks) {
+  height: 50px;
+}
+
+:global(.wix-style-react-slider) :global(.rc-slider-rail) {
+  position: absolute;
+  width: 100%;
+  background-color: $B40;
+  height: var(--wsr-theme-slider-thickness, 6px);
+  border-radius: calc(var(--wsr-theme-radius, 100) * 10px / 100);
+}
+
+:global(.wix-style-react-slider) :global(.rc-slider-track) {
+  position: absolute;
+  left: 0;
+  background-color: $B10;
+  height: var(--wsr-theme-slider-thickness, 6px);
+  border-radius: calc(var(--wsr-theme-radius, 100) * 10px / 100);
+}
+
+:global(.wix-style-react-slider) :global(.rc-slider-mark) {
+  position: absolute;
+  top: 18px;
+  left: 0;
+  width: 100%;
+  font-size: 12px;
+}
+
+:global(.wix-style-react-slider) :global(.rc-slider-mark-text) {
+  position: absolute;
+  display: inline-block;
+  vertical-align: middle;
+  text-align: center;
+  cursor: pointer;
+  color: $D10;
+}
+
+:global(.wix-style-react-slider) :global(.rc-slider-mark-text-active) {
+  color: $D10;
+}
+
+:global(.wix-style-react-slider) :global(.rc-slider-step) {
+  position: absolute;
+  width: 100%;
+  height: 4px;
+  background: transparent;
+}
+
+:global(.wix-style-react-slider) :global(.rc-slider-disabled .rc-slider-rail) {
+  background-color: $D10-10;
+}
+
+:global(.wix-style-react-slider) :global(.rc-slider-disabled .rc-slider-track) {
+  background-color: $D10-20;
+}
+
+:global(.wix-style-react-slider) :global(.rc-slider-disabled .rc-slider-handle) {
+  color: $D10-20;
+}
+
+.mark-line {
+  position: relative;
+  margin: auto;
+  top: var(--wsr-theme-slider-thickness, 6px);
+  width: 1px;
+  height: 7px;
+  background-color: $D50;
+}
+
+.mark-value {
+  position: relative;
+  margin-top: 14px;
+
+  .mark-text {
+    @extend .text, .sizeSmall, .weightThin;
+  }
+}

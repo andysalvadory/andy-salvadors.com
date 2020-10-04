@@ -1,0 +1,9 @@
+@import '../../../src/fonts.scss';
+
+.title {
+  @include FontRoman();
+
+  margin-bottom: 20px;
+  font-size: calc(var(--wsr-theme-font-size, 100) * 16px / 100);
+  color: #32536a;
+}

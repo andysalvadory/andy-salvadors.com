@@ -1,0 +1,25 @@
+@import '../../common';
+
+.button {
+  background: transparent;
+  color: $D30;
+  height: 40px;
+  width: 54px;
+  padding: 0;
+  border: 0;
+  border-radius: calc(var(--wsr-theme-radius, 100) * 6px / 100);
+  outline: none;
+
+  &:not(.disabled):hover {
+    cursor: pointer;
+    color: $B20;
+  }
+}
+
+.active {
+  color: $B10;
+}
+
+.disabled {
+  color: $D10-30;
+}
