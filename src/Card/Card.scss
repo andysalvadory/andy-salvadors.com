@@ -1,0 +1,30 @@
+@import '../common.scss';
+
+.card {
+  position: relative;
+  background: $D80;
+  border-radius: $cardBorderRadius;
+}
+
+.controls {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 6px;
+}
+
+@include withRTL {
+  .controls {
+    left: 0;
+    right: auto;
+  }
+}
+
+.stretch-vertically {
+  height: 100%;
+  flex-grow: 1;
+}
+
+.hide-overflow {
+  overflow: hidden;
+}
