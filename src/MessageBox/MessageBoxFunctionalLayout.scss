@@ -1,0 +1,25 @@
+@import '../common';
+
+.content {
+    box-shadow: $ModalLayoutsBoxShadow;
+    border-radius: 8px;
+    background-color: white;
+    width: 600px;
+}
+
+.body {
+    @include FontLight();
+    color     : $paletteD2;
+    font-size : 16px;
+    line-height: 24px;
+    padding   : 36px 30px 42px 30px;
+}
+
+
+.no-padding {
+    padding: 0;
+}
+
+.with-padding {
+    padding: 36px 30px 42px 30px;
+}

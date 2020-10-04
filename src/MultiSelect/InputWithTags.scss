@@ -1,0 +1,72 @@
+@import '../common';
+
+.input {
+  min-width: 30px;
+  margin: -1px;
+}
+
+.emptyInput {
+  width: 100%;
+}
+
+.hiddenDiv {
+  @include FontRoman();
+  visibility: hidden;
+  padding: 0 12px;
+  white-space: pre;
+  height: 0;
+}
+
+.tagsContainer {
+  width: 100%;
+  @include FontThin();
+  border: 1px solid $B30;
+  border-radius: 6px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  color: $D30;
+  font-size: 16px;
+  overflow-y: hidden;
+}
+
+.hasMaxHeight {
+  overflow-y: scroll;
+}
+
+// Override <Input>'s default focus style
+.tagsContainer div {
+  border-color: transparent !important;
+}
+
+.tagsContainer div:hover {
+  background-color: transparent;
+}
+
+.error {
+  border-color: $paletteR1;
+}
+
+.disabled {
+  border-color: $D55;
+}
+
+.hasFocus {
+  border-color: $B20;
+
+  @include FocusBox;
+
+  // Override <Input>'s default focus style
+  [data-hook="inputWithTags-input"] {
+    box-shadow: none;
+  }
+
+  &.error {
+    @include FocusBoxError;
+  }
+  
+}
+
+.hasHover {
+  background: $B50;
+}
