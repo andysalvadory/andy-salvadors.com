@@ -1,0 +1,56 @@
+:vars{
+  duration: 300ms;
+  delay: 200ms;
+  iterationDely: 700ms;
+}
+
+@keyframes easeOutElastic {
+  0% {
+    transform: scale(1);
+  }
+  42% {
+    transform: scale(1.03);
+  }
+  84% {
+    transform: scale(0.98);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* values were calculated as explained here: https://css-tricks.com/css-keyframe-animation-delay-iterations */
+@keyframes easeOutElasticLoop {
+  0% {
+    transform: scale(1);
+  }
+
+  12.6% {
+    transform: scale(1.03);
+  }
+
+  25.2%{
+    transform: scale(0.98);
+  }
+
+  30%, 100% {
+    transform: scale(1);
+  }
+}
+
+.animation {
+  -st-states: loop, delay;
+  animation: easeOutElastic;
+  animation-duration: value(duration);
+}
+
+.animation:loop {
+  animation: easeOutElasticLoop;
+  animation-duration:calc(value(duration) + value(iterationDely));
+  animation-iteration-count: infinite;
+}
+
+.animation:delay {
+  animation-delay: value(delay);
+}
+
