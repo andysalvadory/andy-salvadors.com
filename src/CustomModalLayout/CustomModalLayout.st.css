@@ -1,0 +1,60 @@
+:vars {
+  modalBoxPadding: 48px;
+}
+
+:import {
+  -st-from: "../Foundation/stylable/spacing.st.css";
+  -st-named: spacing24, spacing30, spacing42;
+}
+
+:import {
+  -st-from: "../BaseModalLayout/BaseModalLayout.st.css";
+  -st-default: BaseModalLayout
+}
+
+:import {
+  -st-from: "../BaseModalLayout/control-button-padding.js";
+  -st-default: controlButtonPadding;
+}
+
+/* Extending BaseModalLayout */
+.root {
+  -st-extends: BaseModalLayout;
+  -st-states: removeContentPadding;
+  width: calc(100% - (value(modalBoxPadding) * 2));
+  max-width: 1254px;
+  min-width: 510px;
+}
+
+/* Extending of BaseModalLayout Blocks */
+.root:not(:removeContentPadding)::content::innerContent {
+  padding: 3px value(spacing30);
+}
+
+.root:controlButtonAmount(0)::header::innerContent {
+  padding: value(spacing24) value(spacing30) value(spacing24) value(spacing30);
+}
+
+.root:controlButtonAmount(1)::header::innerContent {
+  padding: value(spacing24) controlButtonPadding(1) value(spacing24) value(spacing30);
+}
+
+.root:controlButtonAmount(2)::header::innerContent {
+  padding: value(spacing24) controlButtonPadding(2) value(spacing24) value(spacing30);
+}
+
+:global(.rtl) .root::header::innerContent {
+  padding: value(spacing24) value(spacing30) value(spacing24) value(spacing42);
+}
+
+.root::footnote::innerContent {
+  justify-content: flex-start;
+}
+
+.root::content::innerContent {
+  flex: 1;
+}
+
+.root::content {
+  flex: 1;
+}
