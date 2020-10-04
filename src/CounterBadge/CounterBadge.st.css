@@ -1,0 +1,69 @@
+:import {
+  -st-from: '../Foundation/stylable/colors.st.css';
+  -st-named: B10, D20, D80, G10, O10, R10, Y10;
+}
+
+:import {
+  -st-from: '../Foundation/stylable/typography.st.css';
+  -st-named: text-tiny-bold,
+}
+
+.root {
+  -st-states: custom, skin(enum(standard, danger, warning, urgent, success));
+  -st-mixin: text-tiny-bold;
+  border-radius: 18px;
+  color: value(D80);
+}
+
+.root {
+  font-size: 10px;
+  line-height: 18px;
+  width: fit-content;
+  min-width: 6px;
+  text-align: center;
+  padding: 0 6px;
+}
+
+/* General skin*/
+.root {
+  background-color: #465764;
+}
+
+.root:skin(standard) {
+  background-color:
+    #116CFF;
+}
+
+.root:skin(danger) {
+  background-color: #D12D14;
+  /* color: #0d1b25; */
+}
+
+.root:skin(warning) {
+  background-color: #FFC50D;
+  color: #162D3D;
+}
+
+.root:skin(urgent) {
+  background-color: #FCA429;
+  color: #162D3D;
+}
+
+.root:skin(success) {
+  background-color: #1BC69B;
+  color: #162D3D;
+}
+
+.root:custom {
+  position: relative;
+  height: 18px;
+}
+
+.root:custom>* {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}

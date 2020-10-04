@@ -1,0 +1,199 @@
+@import '../common.scss';
+@import '../common/Focusable/Focusable';
+
+$radioButtonCheckedShadow: $B10 0 0 0 1px;
+$radioButtonDisabledShadow: $B50 0 0 0 1px;
+
+.option-wrapper,
+.option-wrapper > * {
+  cursor: initial;
+  box-sizing: border-box;
+  outline: none;
+}
+
+.vertical {
+  display: flex;
+  flex-direction: column;
+}
+
+.horizontal {
+  display: flex;
+}
+
+.horizontal .radio-wrapper>label {
+  margin-right: 20px;
+}
+
+.radio-wrapper {
+  &:not(.checked) {
+    .radio:hover:not(:active) {
+      background-color: $B40;
+    }
+  }
+}
+
+.radio-wrapper > input {
+  display: none;
+}
+
+.radio-wrapper>label {
+  display: flex;
+  flex-direction: row;
+  cursor: inherit;
+}
+
+.radio-wrapper.disabled>label {
+  cursor: default;
+  pointer-events: none;
+}
+
+.radio-wrapper>label.vcenter {
+  align-items: center;
+}
+
+#{$focusable-focus-visible}.radio-wrapper {
+  .radio {
+    @include FocusBox;
+  }
+}
+
+.horizontal .children {
+  padding-left: 6px;
+}
+
+.children {
+  cursor: pointer;
+  padding-left: 12px;
+}
+
+.radio {
+  box-sizing: border-box;
+  display: inline-block;
+  position: relative;
+  min-width: 16px;
+  height: 16px;
+  border: 1px solid #116CFF;
+  background-color: $D80;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+// Margin between radios in a group
+.vertical :not(:first-child).option-wrapper {
+  margin-top: 12px;
+}
+
+.selectionAreaAlways,
+.selectionAreaHover {
+  &.vertical {
+    :not(:first-child).option-wrapper {
+      margin-top: 6px;
+    }
+  }
+
+  &.horizontal {
+    :not(:first-child).option-wrapper {
+      margin-left: 6px;
+    }
+  }
+}
+
+.disabled {
+  .radio {
+    color: $D10-30;
+    border-color: $D10-30;
+    background-color: $D10-05;
+  }
+
+  &.checked .radio:after {
+    background-color: $D10-30;
+  }
+}
+
+.radio:after,
+.radio:after {
+  content: '';
+  display: block;
+  border-radius: 50%;
+  width: 10px;
+  height: 10px;
+  top: 0;
+  left: 0;
+  margin: 2px;
+}
+
+.checked:not(.disabled) .radioButtonChecked:after {
+  background-color: #116CFF;
+}
+
+.radio:active:after {
+  background-color: $B20;
+}
+
+.radio-button-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@include withRTL() {
+  .option-wrapper {
+    direction: rtl;
+  }
+
+  .horizontal .radio-wrapper > label {
+    margin-right: 0;
+    margin-left: 20px;
+  }
+
+  .children {
+    padding-left: 0;
+    padding-right: 12px;
+  }
+
+  .selectionAreaAlways,
+  .selectionAreaHover {
+    .radio-button-wrapper {
+      padding: 12px 16px 12px 0;
+    }
+
+    .children {
+      padding: 12px 12px 12px 0;
+    }
+  }
+}
+
+// Selection Area
+.selectionAreaAlways,
+.selectionAreaHover {
+  .radio-wrapper {
+    border-radius: 8px;
+    cursor: pointer;
+
+    &:not(.disabled).checked {
+      background-color: $B40;
+    }
+  }
+
+  .radio-button-wrapper {
+    padding: 12px 0 12px 16px;
+  }
+
+  .children {
+    padding: 12px 0 12px 12px;
+  }
+
+  :not(.disabled):not(.checked).radio-wrapper:hover {
+    background-color: $B50;
+  }
+}
+
+.selectionAreaAlways {
+  :not(.disabled).radio-wrapper {
+    background-color: $B60;
+  }
+}
+
+.content {
+  margin-top: 6px;
+}

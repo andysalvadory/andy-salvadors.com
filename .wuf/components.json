@@ -1,0 +1,431 @@
+{
+  "Accordion": {
+    "path": "src/Accordion"
+  },
+  "AddItem": {
+    "path": "src/AddItem"
+  },
+  "AnnouncementModalLayout": {
+    "path": "src/AnnouncementModalLayout"
+  },
+  "AutoComplete": {
+    "path": "src/AutoComplete"
+  },
+  "AutoCompleteWithLabel": {
+    "path": "src/AutoCompleteWithLabel"
+  },
+  "Avatar": {
+    "path": "src/Avatar"
+  },
+  "Badge": {
+    "path": "src/Badge"
+  },
+  "BadgeSelect": {
+    "path": "src/BadgeSelect"
+  },
+  "BadgeSelectItemBuilder": {
+    "path": "src/BadgeSelectItemBuilder",
+    "missingFiles": [
+      "docs/index.story.js"
+    ]
+  },
+  "BarChart": {
+    "path": "src/BarChart"
+  },
+  "BaseModalLayout": {
+    "path": "src/BaseModalLayout",
+    "missingFiles": [
+      "docs"
+    ]
+  },
+  "Box": {
+    "path": "src/Box"
+  },
+  "Breadcrumbs": {
+    "path": "src/Breadcrumbs"
+  },
+  "BrowserPreviewWidget": {
+    "path": "src/BrowserPreviewWidget"
+  },
+  "Button": {
+    "path": "src/Button"
+  },
+  "Calendar": {
+    "path": "src/Calendar"
+  },
+  "CalendarPanel": {
+    "path": "src/CalendarPanel"
+  },
+  "CalendarPanelFooter": {
+    "path": "src/CalendarPanelFooter"
+  },
+  "Card": {
+    "path": "src/Card"
+  },
+  "CardGalleryItem": {
+    "path": "src/CardGalleryItem"
+  },
+  "Carousel": {
+    "path": "src/Carousel"
+  },
+  "CheckToggle": {
+    "path": "src/CheckToggle"
+  },
+  "Checkbox": {
+    "path": "src/Checkbox"
+  },
+  "CircularProgressBar": {
+    "path": "src/CircularProgressBar"
+  },
+  "CloseButton": {
+    "path": "src/CloseButton"
+  },
+  "Collapse": {
+    "path": "src/Collapse"
+  },
+  "ColorInput": {
+    "path": "src/ColorInput"
+  },
+  "ColorPicker": {
+    "path": "src/ColorPicker"
+  },
+  "ComposerHeader": {
+    "path": "src/ComposerHeader"
+  },
+  "ContactItemBuilder": {
+    "path": "src/ContactItemBuilder",
+    "missingFiles": [
+      "docs/index.story.js"
+    ]
+  },
+  "CounterBadge": {
+    "path": "src/CounterBadge"
+  },
+  "CustomModalLayout": {
+    "path": "src/CustomModalLayout"
+  },
+  "DatePicker": {
+    "path": "src/DatePicker"
+  },
+  "Divider": {
+    "path": "src/Divider"
+  },
+  "Dropdown": {
+    "path": "src/Dropdown"
+  },
+  "DropdownBase": {
+    "path": "src/DropdownBase"
+  },
+  "DropdownLayout": {
+    "path": "src/DropdownLayout",
+    "missingFiles": [
+      "docs/index.story.js"
+    ]
+  },
+  "EditableSelector": {
+    "path": "src/EditableSelector"
+  },
+  "EditableTitle": {
+    "path": "src/EditableTitle"
+  },
+  "EmptyState": {
+    "path": "src/EmptyState"
+  },
+  "EndorseContentLayout": {
+    "path": "src/EndorseContentLayout",
+    "missingFiles": [
+      "docs/index.story.js"
+    ]
+  },
+  "FilePicker": {
+    "path": "src/FilePicker"
+  },
+  "FillButton": {
+    "path": "src/FillButton"
+  },
+  "FillPreview": {
+    "path": "src/FillPreview"
+  },
+  "FloatingHelper": {
+    "path": "src/FloatingHelper"
+  },
+  "FloatingNotification": {
+    "path": "src/FloatingNotification"
+  },
+  "FontUpgrade": {
+    "path": "src/FontUpgrade"
+  },
+  "FormField": {
+    "path": "src/FormField"
+  },
+  "GenericModalLayout": {
+    "path": "src/GenericModalLayout"
+  },
+  "GoogleAddressInput": {
+    "path": "src/GoogleAddressInput"
+  },
+  "GooglePreview": {
+    "path": "src/GooglePreview"
+  },
+  "Grid": {
+    "path": "src/Grid",
+    "missingFiles": [
+      "docs/index.story.js"
+    ]
+  },
+  "Heading": {
+    "path": "src/Heading"
+  },
+  "Highlighter": {
+    "path": "src/Highlighter"
+  },
+  "IconButton": {
+    "path": "src/IconButton"
+  },
+  "Image": {
+    "path": "src/Image"
+  },
+  "ImageViewer": {
+    "path": "src/ImageViewer"
+  },
+  "InfoIcon": {
+    "path": "src/InfoIcon"
+  },
+  "Input": {
+    "path": "src/Input"
+  },
+  "InputArea": {
+    "path": "src/InputArea"
+  },
+  "InputWithLabel": {
+    "path": "src/InputWithLabel"
+  },
+  "InputWithOptions": {
+    "path": "src/InputWithOptions"
+  },
+  "LabelledElement": {
+    "path": "src/LabelledElement"
+  },
+  "Layout": {
+    "path": "src/Layout",
+    "missingFiles": [
+      "Layout.js"
+    ]
+  },
+  "LinearProgressBar": {
+    "path": "src/LinearProgressBar"
+  },
+  "ListItemAction": {
+    "path": "src/ListItemAction"
+  },
+  "ListItemEditable": {
+    "path": "src/ListItemEditable"
+  },
+  "ListItemSection": {
+    "path": "src/ListItemSection"
+  },
+  "ListItemSelect": {
+    "path": "src/ListItemSelect"
+  },
+  "Loader": {
+    "path": "src/Loader"
+  },
+  "MarketingLayout": {
+    "path": "src/MarketingLayout"
+  },
+  "MediaOverlay": {
+    "path": "src/MediaOverlay"
+  },
+  "MessageModalLayout": {
+    "path": "src/MessageModalLayout"
+  },
+  "MobilePreviewWidget": {
+    "path": "src/MobilePreviewWidget"
+  },
+  "Modal": {
+    "path": "src/Modal"
+  },
+  "ModalMobileLayout": {
+    "path": "src/ModalMobileLayout"
+  },
+  "ModalPreviewLayout": {
+    "path": "src/ModalPreviewLayout"
+  },
+  "ModalSelectorLayout": {
+    "path": "src/ModalSelectorLayout"
+  },
+  "MultiSelect": {
+    "path": "src/MultiSelect"
+  },
+  "MultiSelectCheckbox": {
+    "path": "src/MultiSelectCheckbox"
+  },
+  "NestableList": {
+    "path": "src/NestableList",
+    "missingFiles": [
+      "docs"
+    ]
+  },
+  "NoBorderInput": {
+    "path": "src/NoBorderInput"
+  },
+  "Notification": {
+    "path": "src/Notification"
+  },
+  "NumberInput": {
+    "path": "src/NumberInput"
+  },
+  "Page": {
+    "path": "src/Page"
+  },
+  "PageHeader": {
+    "path": "src/PageHeader"
+  },
+  "Pagination": {
+    "path": "src/Pagination"
+  },
+  "Palette": {
+    "path": "src/Palette"
+  },
+  "Popover": {
+    "path": "src/Popover"
+  },
+  "PopoverMenu": {
+    "path": "src/PopoverMenu"
+  },
+  "PreviewWidget": {
+    "path": "src/PreviewWidget"
+  },
+  "Proportion": {
+    "path": "src/Proportion"
+  },
+  "RadioGroup": {
+    "path": "src/RadioGroup"
+  },
+  "Range": {
+    "path": "src/Range"
+  },
+  "RichTextInputArea": {
+    "path": "src/RichTextInputArea"
+  },
+  "Search": {
+    "path": "src/Search"
+  },
+  "SectionHelper": {
+    "path": "src/SectionHelper"
+  },
+  "SegmentedToggle": {
+    "path": "src/SegmentedToggle"
+  },
+  "Selector": {
+    "path": "src/Selector",
+    "missingFiles": [
+      "docs"
+    ]
+  },
+  "SidePanel": {
+    "path": "src/SidePanel"
+  },
+  "Sidebar": {
+    "path": "src/Sidebar"
+  },
+  "SidebarBackButton": {
+    "path": "src/SidebarBackButton"
+  },
+  "SidebarDivider": {
+    "path": "src/SidebarDivider"
+  },
+  "SidebarHeader": {
+    "path": "src/SidebarHeader"
+  },
+  "SidebarSectionItem": {
+    "path": "src/SidebarSectionItem"
+  },
+  "SidebarSectionTitle": {
+    "path": "src/SidebarSectionTitle"
+  },
+  "Skeleton": {
+    "path": "src/Skeleton"
+  },
+  "Slider": {
+    "path": "src/Slider"
+  },
+  "SocialButton": {
+    "path": "src/SocialButton"
+  },
+  "SocialPreview": {
+    "path": "src/SocialPreview"
+  },
+  "SortableList": {
+    "path": "src/SortableList",
+    "missingFiles": [
+      "docs"
+    ]
+  },
+  "StatisticsWidget": {
+    "path": "src/StatisticsWidget"
+  },
+  "StatusIndicator": {
+    "path": "src/StatusIndicator"
+  },
+  "Stepper": {
+    "path": "src/Stepper"
+  },
+  "Swatches": {
+    "path": "src/Swatches"
+  },
+  "Table": {
+    "path": "src/Table"
+  },
+  "TableActionCell": {
+    "path": "src/TableActionCell"
+  },
+  "TableToolbar": {
+    "path": "src/TableToolbar",
+    "missingFiles": [
+      "docs/index.story.js"
+    ]
+  },
+  "Tabs": {
+    "path": "src/Tabs"
+  },
+  "Tag": {
+    "path": "src/Tag"
+  },
+  "Text": {
+    "path": "src/Text"
+  },
+  "TextButton": {
+    "path": "src/TextButton"
+  },
+  "Thumbnail": {
+    "path": "src/Thumbnail"
+  },
+  "TimeInput": {
+    "path": "src/TimeInput"
+  },
+  "TimeTable": {
+    "path": "src/TimeTable"
+  },
+  "Timeline": {
+    "path": "src/Timeline"
+  },
+  "ToggleButton": {
+    "path": "src/ToggleButton"
+  },
+  "ToggleSwitch": {
+    "path": "src/ToggleSwitch"
+  },
+  "Tooltip": {
+    "path": "src/Tooltip"
+  },
+  "VariableInput": {
+    "path": "src/VariableInput"
+  },
+  "VerticalTabs": {
+    "path": "src/VerticalTabs"
+  },
+  "VerticalTabsItem": {
+    "path": "src/VerticalTabsItem"
+  }
+}

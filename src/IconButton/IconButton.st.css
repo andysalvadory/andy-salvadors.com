@@ -1,0 +1,322 @@
+:import {
+  -st-from: 'wix-ui-core/index.st.css';
+  -st-named: ButtonNext;
+}
+
+:import {
+  -st-from: "../Foundation/stylable/colors.st.css";
+  -st-named: B10, D80, B20, B50, B40, F00, D10-20, D20-48, D20-54, D20-60, D80-70, P10, P20, D10-30, D80-30;
+}
+
+.root {
+  -st-extends: ButtonNext;
+  -st-states: skin(string), priority(string), size(string);
+
+  width: 36px;
+  height: 36px;
+  border-radius: 18px;
+  padding: 0;
+
+  box-sizing: border-box;
+  text-align: center;
+
+  border: 1px solid;
+  outline: none;
+
+  transition-duration: 100ms;
+  transition-timing-function: linear;
+  transition-property: background-color, color, border-color;
+
+  background-color: #116CFF;
+  border-color: #116CFF;
+  color: white;
+}
+
+.root:hover {
+  background-color: #0F59E6;
+  border-color: #0F59E6;
+  color: value(D80);
+}
+
+.root:active {
+  background-color: #116CFF;
+  border-color: #116CFF;
+  color: value(D80);
+}
+
+.root:disabled {
+  background-color: value(D10-30);
+  border-color: transparent;
+  color: value(D80);
+}
+
+.root:focus-visible {
+  box-shadow: 0 0 0 3px value(F00);
+}
+
+.root::content {
+  line-height: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+/* Skin: Standard - Secondary */
+
+.root:priority(secondary) {
+  border: solid 1px #116CFF;
+  background: transparent;
+  color:
+    #116CFF;
+}
+
+.root:priority(secondary):hover {
+  color: value(D80);
+  border-color: transparent;
+  background-color: #0F59E6;
+}
+
+.root:priority(secondary):active {
+  background-color: #116CFF;
+  border-color: #116CFF;
+  color: value(D80);
+}
+
+.root:priority(secondary):disabled {
+  border-color: value(D10-30);
+  color: value(D10-30);
+  background-color: transparent;
+}
+
+
+/* Skin: inverted */
+
+.root:skin(inverted) {
+  border: none;
+  background-color: value(D80);
+  color:
+    #116CFF;
+}
+
+.root:skin(inverted):hover {
+  color: value(D80);
+  border-color: transparent;
+  background: #0F59E6;
+}
+
+.root:skin(inverted):active {
+  background-color: #116CFF;
+  border-color: #116CFF;
+  color: value(D80);
+}
+
+.root:skin(inverted):disabled {
+  background-color: value(D10-30);
+  border-color: transparent;
+  color: value(D80);
+}
+
+/* Skin: inverted - Secondary */
+
+.root:skin(inverted):priority(secondary) {
+  border: none;
+  background-color: value(D80);
+  color:
+    #116CFF;
+}
+
+.root:skin(inverted):priority(secondary):hover {
+  color: value(D80);
+  border-color: transparent;
+  background: #0F59E6;
+}
+
+.root:skin(inverted):priority(secondary):active {
+  background-color: value(B10);
+  border-color: value(B10);
+  color: value(D80);
+}
+
+.root:skin(inverted):priority(secondary):disabled {
+  background-color: value(D10-30);
+  border-color: transparent;
+  color: value(D80);
+}
+
+
+/* skin Light */
+
+.root:skin(light) {
+  border: none;
+  background-color: value(D80);
+  color: #116CFF;
+}
+
+.root:skin(light):hover {
+  background-color:
+    #EBF4FF;
+  color: #0F59E6;
+  border-color:
+    #EBF4FF;
+}
+
+.root:skin(light):active {
+  background-color: #EBF4FF;
+  color: #0F59E6;
+}
+
+.root:skin(light):disabled {
+  background-color: value(D80-30);
+  border-color: transparent;
+  color: value(D80);
+}
+
+/* skin Light secondary */
+
+.root:skin(light):priority(secondary) {
+  border: solid 1px value(D80);
+  background: transparent;
+  color: value(D80);
+}
+
+.root:skin(light):priority(secondary):hover {
+  background-color: #EBF4FF;
+  color: #0F59E6;
+  border-color: #EBF4FF;
+}
+
+.root:skin(light):priority(secondary):active {
+  background-color: #EBF4FF;
+  border: solid 1px #EBF4FF;
+  color: #0F59E6;
+}
+
+.root:skin(light):priority(secondary):disabled {
+  border-color: value(D80-30);
+  color: value(D80-30);
+  background-color: transparent;
+}
+
+/* skin Transparent */
+
+.root:skin(transparent) {
+  border-color: transparent;
+  background-color: value(D20-48);
+  color: value(D80);
+}
+
+.root:skin(transparent):hover {
+  border-color: transparent;
+  background-color: value(D20-54);
+  color: value(D80);
+}
+
+.root:skin(transparent):active {
+  border-color: transparent;
+  background-color: value(D20-60);
+  color: value(D80);
+}
+
+.root:skin(transparent):disabled {
+  background-color: value(D10-20);
+  border-color: transparent;
+  color: value(D80-70);
+}
+
+/* skin: transparent - Secondary */
+
+.root:skin(transparent):priority(secondary) {
+  border-color: transparent;
+  background-color: transparent;
+  color: value(D80);
+}
+
+.root:skin(transparent):priority(secondary):hover {
+  border-color: transparent;
+  background-color: value(D20-54);
+  color: value(D80);
+}
+
+.root:skin(transparent):priority(secondary):active {
+  border-color: transparent;
+  background-color: value(D20-60);
+  color: value(D80);
+}
+
+.root:skin(transparent):priority(secondary):disabled {
+  background-color: transparent;
+  border-color: transparent;
+  color: value(D80-70);
+}
+
+/* skin: premium */
+
+.root:skin(premium) {
+  border: none;
+  background-color: #9F42BD;
+  color: value(D80);
+}
+
+.root:skin(premium):hover {
+  background-color: #8D21B0;
+  color: value(D80);
+  border-color: #8D21B0;
+}
+
+.root:skin(premium):active {
+  background-color: #9F42BD;
+  color: value(D80);
+}
+
+.root:skin(premium):disabled {
+  background-color: value(D10-30);
+  border-color: transparent;
+  color: value(D80);
+}
+
+/* skin: premium - Secondary */
+
+.root:skin(premium):priority(secondary) {
+  border: solid 1px #9F42BD;
+  background: transparent;
+  color: #9F42BD;
+}
+
+.root:skin(premium):priority(secondary):hover {
+  background-color: #8D21B0;
+  color: value(D80);
+  border-color: #8D21B0;
+}
+
+.root:skin(premium):priority(secondary):active {
+  background-color: #9F42BD;
+  border: solid 1px #9F42BD;
+  color: value(D80);
+}
+
+.root:skin(premium):priority(secondary):disabled {
+  border-color: value(D10-30);
+  color: value(D10-30);
+  background-color: transparent;
+}
+
+/* sizes */
+
+.root:size(tiny) {
+  width: 24px;
+  height: 24px;
+}
+
+.root:size(small) {
+  width: 30px;
+  height: 30px;
+}
+
+.root:size(large) {
+  width: 42px;
+  height: 42px;
+  border-radius: 24px;
+}

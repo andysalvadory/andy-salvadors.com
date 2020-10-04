@@ -1,0 +1,24 @@
+:import {
+  -st-from: "../Foundation/stylable/colors.st.css";
+  -st-named: D80, D20, B40, B30, B00, B10
+}
+
+/* At the moment, it was decided by UX to not include the missing colors below as part of the design system palette */
+:vars {
+  /* Dark skin */
+  sidebarBackgroundColor: #0d1b25;
+  textColor: value(D80);
+  hoveredBackgroundColor: #162D3D;
+  selectedBackgroundColor: #162D3D;
+  selectedTextColor: #60A1FF;
+  disabledBackgroundColor: #0d1b25;
+  dividerColor: #D0D5D8;
+
+  /* Light skin */
+  sidebarLightBackgroundColor: value(D80);
+  lightTextColor: #465764;
+  hoveredLightBackgroundColor: #E5F1FF;
+  selectedLightBackgroundColor: #B8D9FF;
+  selectedLightTextColor: #0E50CF;
+  disabledLightBackgroundColor: value(D80);
+}
