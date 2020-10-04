@@ -1,0 +1,32 @@
+:import {
+  -st-from: "../../Tooltip/Tooltip.st.css";
+  -st-default: Tooltip;
+}
+
+/* Text */
+.text {
+  white-space: nowrap !important;
+  text-overflow: ellipsis !important;
+  overflow: hidden !important;
+  max-width: 100% !important;
+  display: inline-block !important;
+  vertical-align: bottom !important;
+}
+
+.lineClamp {
+  white-space: normal !important;
+  display: -webkit-box !important;
+  -webkit-box-orient: vertical;
+}
+
+/* Tooltip */
+.tooltip {
+  -st-extends: Tooltip;
+  display: inline;
+  overflow: hidden;
+  height: max-content;
+}
+
+.tooltip::popoverElement {
+  max-width: 100%;
+}
