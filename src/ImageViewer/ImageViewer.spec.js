@@ -1,0 +1,208 @@
+import React from 'react';
+import ImageViewer from './ImageViewer';
+import ImageViewerDriverFactory from './ImageViewer.driver';
+import { createRendererWithDriver, cleanup } from '../../test/utils/react';
+
+describe('ImageViewer', () => {
+  const render = createRendererWithDriver(ImageViewerDriverFactory);
+  const createDriver = jsx => {
+    return render(jsx).driver;
+  };
+
+  afterEach(() => cleanup());
+
+  const IMAGE_URL = 'some-image-url.png';
+  const addImage = jest.fn();
+  const updateImage = jest.fn();
+  const removeImage = jest.fn();
+
+  describe('when default scenario', () => {
+    let props, driver;
+    beforeEach(() => {
+      props = {
+        imageUrl: IMAGE_URL,
+        onAddImage: addImage,
+        onUpdateImage: updateImage,
+        onRemoveImage: removeImage,
+      };
+      driver = createDriver(<ImageViewer {...props} />);
+    });
+
+    it('should display image url', () => {
+      expect(driver.getImageUrl()).toBe(IMAGE_URL);
+    });
+
+    it('should trigger update image', () => {
+      driver.clickUpdate();
+      expect(updateImage).toBeCalled();
+    });
+
+    it('should trigger remove image', () => {
+      driver.clickRemove();
+      expect(removeImage).toBeCalled();
+    });
+
+    it('should trigger add image', () => {
+      props = {
+        imageUrl: '',
+        onAddImage: addImage,
+      };
+      driver = createDriver(<ImageViewer {...props} />);
+      driver.clickAdd();
+      expect(addImage).toBeCalled();
+    });
+  });
+
+  it('should not display image if not exists', () => {
+    const props = {
+      imageUrl: '',
+    };
+    const driver = createDriver(<ImageViewer {...props} />);
+    expect(driver.isImageVisible()).toBeFalsy();
+  });
+
+  describe('height and width', () => {
+    it('should be added to style attribute when image is not present', () => {
+      const props = {
+        imageUrl: '',
+        width: 300,
+        height: 300,
+      };
+      const driver = createDriver(<ImageViewer {...props} />);
+      expect(driver.getContainerStyles()).toEqual(
+        'width: 300px; height: 300px;',
+      );
+    });
+
+    it('should be added to style attribute when image is present', () => {
+      const props = {
+        imageUrl: IMAGE_URL,
+        width: 300,
+        height: 300,
+      };
+      const driver = createDriver(<ImageViewer {...props} />);
+      expect(driver.getContainerStyles()).toEqual(
+        'width: 300px; height: 300px;',
+      );
+    });
+
+    it('should not add style attribute when width and height props are not passed', () => {
+      const props = {
+        imageUrl: IMAGE_URL,
+      };
+      const driver = createDriver(<ImageViewer {...props} />);
+      expect(driver.getContainerStyles()).toEqual(null);
+    });
+  });
+
+  describe('hide or show add image', () => {
+    it('should not display AddItem component if image exists', () => {
+      const props = {
+        imageUrl: IMAGE_URL,
+      };
+
+      const driver = createDriver(<ImageViewer {...props} />);
+      expect(driver.isAddItemVisible()).toBeFalsy();
+    });
+
+    it('should display AddItem component if image dosnt exists', () => {
+      const props = {
+        imageUrl: '',
+      };
+
+      const driver = createDriver(<ImageViewer {...props} />);
+      expect(driver.isAddItemVisible()).toBeTruthy();
+    });
+  });
+
+  describe('tooltips', () => {
+    const tooltipProps = {
+      relative: true,
+      showImmediately: true,
+    };
+
+    describe('add image', () => {
+      const props = {
+        imageUrl: '',
+        tooltipProps,
+        addImageInfo: 'add image info',
+      };
+
+      it('should display provided tooltip content', async () => {
+        const driver = createDriver(<ImageViewer {...props} />);
+        expect(await driver.getAddTooltipContent()).toEqual(props.addImageInfo);
+      });
+    });
+
+    describe('update image', () => {
+      const props = {
+        imageUrl: IMAGE_URL,
+        tooltipProps,
+        updateImageInfo: 'update image info',
+      };
+
+      it('should display provided tooltip content', async () => {
+        const driver = createDriver(<ImageViewer {...props} />);
+        expect(await driver.getUpdateTooltipContent()).toEqual(
+          props.updateImageInfo,
+        );
+      });
+    });
+
+    describe('remove image', () => {
+      const props = {
+        imageUrl: IMAGE_URL,
+        tooltipProps,
+        removeImageInfo: 'remove image info',
+      };
+
+      it('should display provided tooltip content', async () => {
+        const driver = createDriver(<ImageViewer {...props} />);
+        expect(await driver.getRemoveTooltipContent()).toEqual(
+          props.removeImageInfo,
+        );
+      });
+    });
+
+    describe('update button disabled', () => {
+      const props = {
+        imageUrl: IMAGE_URL,
+        showUpdateButton: false,
+      };
+
+      it('should hide update button', async () => {
+        const driver = createDriver(<ImageViewer {...props} />);
+        expect(await driver.updateExists()).toEqual(false);
+      });
+    });
+
+    describe('error state', () => {
+      it('should not display error icon by defualt', () => {
+        const props = {
+          imageUrl: '',
+          width: 300,
+          height: 300,
+        };
+
+        const driver = createDriver(<ImageViewer {...props} />);
+        expect(driver.isErrorVisible()).toBeFalsy();
+      });
+
+      it('should display error icon on error with the correct message', async () => {
+        const props = {
+          imageUrl: '',
+          width: 300,
+          height: 300,
+          error: true,
+          errorMessage: 'error message',
+          tooltipProps,
+        };
+
+        const driver = createDriver(<ImageViewer {...props} />);
+        expect(await driver.getErrorTooltipContent()).toEqual(
+          props.errorMessage,
+        );
+      });
+    });
+  });
+});

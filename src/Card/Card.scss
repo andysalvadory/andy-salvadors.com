@@ -1,0 +1,15 @@
+@import '../common.scss';
+
+.card {
+  background: $D80;
+  border-radius: 8px;
+}
+
+.stretch-vertically {
+  height: 100%;
+  flex-grow: 1;
+}
+
+.hide-overflow {
+  overflow: hidden;
+}

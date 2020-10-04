@@ -1,0 +1,266 @@
+import React from 'react';
+import { consoleErrors } from 'wix-ui-test-utils/dist/src/jest-setup';
+import MessageBoxMarketerialLayout from './MessageBoxMarketerialLayout';
+import MessageBoxMarketerialLayoutFactory from './MessageBoxMarketerialLayout.driver';
+import sinon from 'sinon';
+import {
+  isTestkitExists,
+  isEnzymeTestkitExists,
+} from '../../test/utils/testkit-sanity';
+import { messageBoxMarketerialLayoutTestkitFactory } from '../../testkit';
+import { messageBoxMarketerialLayoutTestkitFactory as enzymeMessageBoxTestkitFactory } from '../../testkit/enzyme';
+import { mount } from 'enzyme';
+import { depLogger } from '../utils/deprecationLog';
+import { createRendererWithDriver, cleanup } from '../../test/utils/react';
+
+describe('MessageBoxMarketerialLayout', () => {
+  const render = createRendererWithDriver(MessageBoxMarketerialLayoutFactory);
+  const createDriver = jsx => render(jsx).driver;
+
+  afterEach(() => cleanup());
+
+  const requiredProps = {
+    title: 'title',
+    content: <div />,
+    onClose: () => {},
+  };
+
+  describe('action buttons', () => {
+    it('should display the primary button label text on top the primary button', () => {
+      const props = Object.assign({}, requiredProps, {
+        primaryButtonLabel: 'primaryButtonLabel',
+      });
+      const driver = createDriver(
+        <MessageBoxMarketerialLayout {...props} fixImagePosition />,
+      );
+      expect(driver.getPrimaryButtonText()).toBe(props.primaryButtonLabel);
+    });
+
+    it('should display the primary button with custom them', () => {
+      const props = Object.assign({}, requiredProps, {
+        primaryButtonLabel: 'primaryButtonLabel',
+        primaryButtonTheme: 'purple',
+      });
+      const driver = createDriver(<MessageBoxMarketerialLayout {...props} />);
+      expect(driver.getPrimaryButton().className).toContain('fullpurple');
+    });
+
+    it('should not display the primary button if primary button label was not passed', () => {
+      const props = Object.assign({}, requiredProps, {});
+      const driver = createDriver(<MessageBoxMarketerialLayout {...props} />);
+      expect(driver.getPrimaryButton()).toBeNull();
+    });
+
+    it('should not display disabled primary button if primaryButtonDisabled is true', () => {
+      const props = Object.assign({}, requiredProps, {
+        primaryButtonLabel: 'primaryButtonLabel',
+        primaryButtonDisabled: true,
+      });
+      const driver = createDriver(<MessageBoxMarketerialLayout {...props} />);
+      expect(driver.getPrimaryButton().attributes.disabled).toBeTruthy();
+    });
+
+    it('should display the secondary button label text on top the secondary button', () => {
+      const props = Object.assign({}, requiredProps, {
+        secondaryButtonLabel: 'secondaryButtonLabel',
+      });
+      const driver = createDriver(<MessageBoxMarketerialLayout {...props} />);
+      expect(driver.getSecondaryButtonText()).toBe(props.secondaryButtonLabel);
+    });
+
+    it('should not display the secondary button if secondary button label was not passed', () => {
+      const props = Object.assign({}, requiredProps, {});
+      const driver = createDriver(<MessageBoxMarketerialLayout {...props} />);
+      expect(driver.getSecondaryButton()).toBeNull();
+    });
+
+    it(`should trigger the primary button action upon clicking the primary button`, () => {
+      const props = Object.assign({}, requiredProps, {
+        onPrimaryButtonClick: sinon.spy(),
+        primaryButtonLabel: 'primaryButtonLabel',
+      });
+      const driver = createDriver(<MessageBoxMarketerialLayout {...props} />);
+      driver.clickOnPrimaryButton();
+      expect(props.onPrimaryButtonClick.calledOnce).toBeTruthy();
+    });
+
+    it(`should trigger the secondary button action upon clicking the secondary button`, () => {
+      const props = Object.assign({}, requiredProps, {
+        onSecondaryButtonClick: sinon.spy(),
+        secondaryButtonLabel: 'secondaryButtonLabel',
+      });
+      const driver = createDriver(<MessageBoxMarketerialLayout {...props} />);
+      driver.clickOnSecondaryButton();
+      expect(props.onSecondaryButtonClick.calledOnce).toBeTruthy();
+    });
+
+    it(`should close the message dialog upon clicking the close button`, () => {
+      const props = Object.assign({}, requiredProps, {
+        onClose: sinon.spy(),
+      });
+      const driver = createDriver(<MessageBoxMarketerialLayout {...props} />);
+      driver.closeMessageBox();
+      expect(props.onClose.calledOnce).toBeTruthy();
+    });
+  });
+
+  describe('general', () => {
+    it(`should render title`, () => {
+      const props = Object.assign({}, requiredProps, {
+        title: 'title',
+      });
+      const driver = createDriver(<MessageBoxMarketerialLayout {...props} />);
+      expect(driver.getTitle()).toBe(props.title);
+    });
+
+    it(`should render the passed content in the markup`, () => {
+      const props = Object.assign({}, requiredProps, {
+        content: <div data-hook="inner-div" />,
+      });
+      const driver = createDriver(<MessageBoxMarketerialLayout {...props} />);
+      expect(
+        driver.getContentBySelector('[data-hook="inner-div"]'),
+      ).not.toBeNull();
+    });
+
+    it(`should render image from given imageUrl`, () => {
+      const props = Object.assign({}, requiredProps, {
+        imageUrl:
+          'http://www.domstechblog.com/wp-content/uploads/2015/09/wix.png',
+      });
+      const driver = createDriver(<MessageBoxMarketerialLayout {...props} />);
+      expect(driver.getImageSrc()).toBe(props.imageUrl);
+    });
+
+    it(`should render image from given component`, () => {
+      const props = Object.assign({}, requiredProps, {
+        imageComponent: <div data-hook="image-component-test" />,
+      });
+      const driver = createDriver(<MessageBoxMarketerialLayout {...props} />);
+      expect(
+        driver.getContentBySelector('[data-hook="image-component-test"]'),
+      ).not.toBeNull();
+    });
+
+    it(`should use default color theme (blue) if none was passed`, () => {
+      const props = Object.assign({}, requiredProps, {
+        primaryButtonLabel: 'primaryButtonLabel',
+      });
+      const driver = createDriver(<MessageBoxMarketerialLayout {...props} />);
+      expect(driver.getPrimaryButton().className).toContain('fullblue');
+    });
+
+    it(`should use color theme`, () => {
+      const props = Object.assign({}, requiredProps, {
+        primaryButtonLabel: 'primaryButtonLabel',
+        theme: 'purple',
+      });
+      const driver = createDriver(<MessageBoxMarketerialLayout {...props} />);
+      expect(driver.getPrimaryButton().className).toContain('fullpurple');
+    });
+  });
+
+  describe('footer children', () => {
+    it(`should render the passed footer content`, () => {
+      const props = Object.assign({}, requiredProps, {
+        footerBottomChildren: <div data-hook="inner-div" />,
+      });
+
+      const driver = createDriver(<MessageBoxMarketerialLayout {...props} />);
+
+      expect(
+        driver.getContentBySelector('[data-hook="inner-div"]'),
+      ).not.toBeNull();
+      expect(
+        driver.getContentBySelector(
+          '[data-hook="footer-layout-bottom-children"]',
+        ),
+      ).not.toBeNull();
+    });
+
+    it(`should not render secondary button when footer content passed`, () => {
+      const props = Object.assign({}, requiredProps, {
+        footerBottomChildren: <div data-hook="inner-div" />,
+      });
+
+      const driver = createDriver(<MessageBoxMarketerialLayout {...props} />);
+
+      expect(driver.getSecondaryButton()).toBeNull();
+    });
+
+    it(`should not render footer's wrapper div when footer content isn't passed`, () => {
+      const props = Object.assign({}, requiredProps, {});
+
+      const driver = createDriver(<MessageBoxMarketerialLayout {...props} />);
+
+      expect(
+        driver.getContentBySelector(
+          '[data-hook="footer-layout-bottom-children"]',
+        ),
+      ).toBeNull();
+    });
+  });
+
+  describe('deprecationLog fixImagePosition', () => {
+    let depLogSpy;
+
+    beforeEach(() => {
+      depLogSpy = jest.spyOn(depLogger, 'log');
+    });
+
+    afterEach(() => depLogSpy.mockRestore());
+
+    it('should show deprecationLog', () => {
+      createDriver(
+        <MessageBoxMarketerialLayout {...requiredProps} imageUrl="blah" />,
+      );
+      expect(depLogSpy).toBeCalledWith(
+        'MessageBoxMarketerialLayout have issue with image positioning. Please use fixImagePosition prop to fix it. Next major version will have a fix by default.',
+      );
+    });
+
+    it('should show deprecationLog and warn of imageUrl not a string', () => {
+      createDriver(
+        <MessageBoxMarketerialLayout {...requiredProps} imageUrl={4} />,
+      );
+      expect(consoleErrors.get()).toHaveLength(1);
+      expect(consoleErrors.get()[0].includes('Invalid')).toBeTruthy();
+
+      consoleErrors.reset(); // prevent test from failing
+    });
+
+    it('should NOT show deprecationLog when fixImgPosition is provided', () => {
+      createDriver(
+        <MessageBoxMarketerialLayout
+          {...requiredProps}
+          imageUrl="blah"
+          fixImagePosition
+        />,
+      );
+      expect(depLogSpy).not.toHaveBeenCalled();
+    });
+  });
+
+  describe('testkit', () => {
+    it('should exist', () => {
+      expect(
+        isTestkitExists(
+          <MessageBoxMarketerialLayout {...requiredProps} />,
+          messageBoxMarketerialLayoutTestkitFactory,
+        ),
+      ).toBe(true);
+    });
+  });
+
+  describe('enzyme testkit', () => {
+    it('should exist', () => {
+      expect(
+        isEnzymeTestkitExists(
+          <MessageBoxMarketerialLayout {...requiredProps} />,
+          enzymeMessageBoxTestkitFactory,
+          mount,
+        ),
+      ).toBe(true);
+    });
+  });
+});

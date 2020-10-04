@@ -1,0 +1,107 @@
+@import "../common.scss";
+@import "../common/Focusable/Focusable";
+
+.root {
+  height: 100%;
+  width: 100%;
+  cursor: pointer;
+  outline: none;
+  display: flex;
+  box-sizing: border-box;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 30px;
+  color: $B10;
+
+  &:hover {
+    background-color: $B40;
+  }
+
+  &#{$focusable-focus-visible} {
+    @include FocusBox;
+    border: none;
+
+    &.hasError {
+      @include FocusBoxError;
+    }
+  }
+}
+
+.box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+}
+
+.row {
+  flex-direction: row;
+}
+
+.wrapped {
+  padding: 12px;
+  background-color: $B50;
+  transition: background 0.2s linear;
+  backface-visibility: hidden;
+  transform: translate3d(0, 0, 0);
+  border-radius: 8px;
+}
+
+.plain {
+  background-color: $paletteD6;
+}
+
+.dashes {
+  border: dashed 1px $B20;
+  border-radius: 8px;
+  background-color: $S50;
+}
+
+.filled {
+  background-color: $B50;
+  border-radius: 8px;
+}
+
+.dashes:active,
+.plain:active,
+.filled:active {
+  background-color: $B30;
+}
+
+.image {
+  border: dashed 1px $B20;
+  border-radius: 3px;
+  padding: 12px 30px;
+}
+
+.disabled {
+  background-color: $S50;
+  color: $D55;
+  cursor: auto;
+  &.dashes {
+    border: dashed 1px $D55;
+  }
+  &:hover {
+    background-color: $S50;
+  }
+}
+
+.left {
+  justify-content: flex-start;
+}
+
+.right {
+  justify-content: flex-end;
+}
+
+.center {
+  justify-content: center;
+}
+
+:export {
+  B10: $B10;
+  D55: $D55;
+}

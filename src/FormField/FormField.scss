@@ -1,0 +1,99 @@
+@import '../common.scss';
+
+$suffixHorizontalPadding: 12px;
+$inlineLabelMinHeight: 36px;
+
+.root {
+  display: inline-flex;
+  flex-wrap: wrap;
+
+  &.stretchContent{
+    display: flex;
+
+    .children {
+      flex-grow: 1;
+    }
+  }
+}
+
+.children {
+  flex: 0 0 100%;
+
+  &.childrenWithInlineSuffixes {
+    flex: 0 0 auto;
+  }
+
+  &.stretchContent{
+    flex-grow: 1;
+  }
+}
+
+.minLabelHeight {
+  min-height: $inlineLabelMinHeight;
+  line-height: $inlineLabelMinHeight;
+}
+
+.labelFromTop {
+  .label {
+    display: flex;
+    align-items: center;
+    flex: 1 0 auto;
+  }
+
+  .children {
+    padding-top: 6px;
+  }
+}
+
+.labelFromRight {
+  flex-direction: row;
+
+  .childrenWithInlineSuffixes {
+    padding-right: $suffixHorizontalPadding;
+  }
+}
+
+.labelFromLeft {
+  flex-direction: row-reverse;
+
+  .childrenWithInlineSuffixes {
+    padding-left: $suffixHorizontalPadding;
+  }
+}
+
+@include withRTL {
+  .labelFromRight {
+    .childrenWithInlineSuffixes {
+      padding-right: 0;
+      padding-left: $suffixHorizontalPadding;
+    }
+  }
+
+  .labelFromLeft {
+    .childrenWithInlineSuffixes {
+      padding-left: 0;
+      padding-right: $suffixHorizontalPadding;
+    }
+  }
+}
+
+.asterisk {
+  display: inline-block;
+  color: $B20;
+  font-size: 22px;
+  margin-left: 6px;
+  margin-top: -4px;
+}
+
+.infoIcon {
+  margin-left: 3px;
+}
+
+.suffixesInline {
+  display: flex;
+  align-items: center;
+}
+
+.counter {
+  margin-left: auto;
+}
