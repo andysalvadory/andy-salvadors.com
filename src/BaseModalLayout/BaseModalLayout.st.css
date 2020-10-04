@@ -1,0 +1,98 @@
+:vars {
+  modalBoxPadding: 48px;
+  helpButtonSize: 24px;
+}
+
+:import {
+  -st-from: "../Foundation/stylable/colors.st.css";
+  -st-named: D80;
+}
+
+:import {
+  -st-from: "../Foundation/stylable/spacing.st.css";
+  -st-named: spacing12
+}
+
+:import {
+  -st-from: "../Foundation/stylable/border.st.css";
+  -st-named: radius08;
+}
+
+:import {
+  -st-from: "../Foundation/stylable/shadows.st.css";
+  -st-named: shadow40;
+}
+
+:import {
+  -st-from: "./LayoutBlocks/Header/Header.st.css";
+  -st-default: Header;
+}
+
+:import {
+  -st-from: "./LayoutBlocks/Content/Content.st.css";
+  -st-default: Content;
+}
+
+:import {
+  -st-from: "./LayoutBlocks/Footer/Footer.st.css";
+  -st-default: Footer;
+}
+
+:import {
+  -st-from: "./LayoutBlocks/Footnote/Footnote.st.css";
+  -st-default: Footnote;
+}
+
+:import {
+  -st-from: "./LayoutBlocks/Illustration/Illustration.st.css";
+  -st-default: Illustration;
+}
+
+.root {
+  -st-states: theme(enum(standard, premium, destructive));
+  background-color: value(D80);
+  position: relative;
+  max-height: calc(100vh - (value(modalBoxPadding) * 2));
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border-radius: value(radius08);
+  box-shadow: value(shadow40);
+}
+
+.controlButtons {
+  position: absolute;
+  right: value(spacing12);
+  top: value(spacing12);
+}
+
+:global(.rtl) .controlButtons {
+  left: value(spacing12);
+  right: unset;
+}
+
+.helpButton {
+  width: value(helpButtonSize);
+  height: value(helpButtonSize);
+}
+
+/** Exposing stylable api of the LayoutBlock for extending purposes */
+.header {
+  -st-extends: Header;
+}
+
+.content {
+  -st-extends: Content;
+}
+
+.footer {
+  -st-extends: Footer;
+}
+
+.footnote {
+  -st-extends: Footnote;
+}
+
+.illustration {
+  -st-extends: Illustration;
+}
