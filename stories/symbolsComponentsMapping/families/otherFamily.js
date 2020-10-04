@@ -1,0 +1,43 @@
+import { otherSymbols } from '../symbols';
+import {
+  otherComponentsNames as componentsNames,
+  sharedComponentsNames,
+  selectionComponentsNames,
+} from '../components';
+
+/**
+ * Symbol => Component 11
+ */
+export const otherSymbolsToComponents = {
+  [otherSymbols.avatar]: [componentsNames.Avatar],
+
+  [otherSymbols.badge]: [componentsNames.Badge, sharedComponentsNames.Icon],
+
+  [otherSymbols.badgeSelect]: [componentsNames.BadgeSelect],
+
+  [otherSymbols.counterBadge]: [
+    componentsNames.CounterBadge,
+    sharedComponentsNames.Icon,
+  ],
+
+  [otherSymbols.tag]: [
+    sharedComponentsNames.Tag,
+    sharedComponentsNames.TagList,
+  ],
+
+  [otherSymbols.loader]: [componentsNames.Loader],
+
+  [otherSymbols.linearProgressBar]: [componentsNames.LinearProgressBar],
+
+  [otherSymbols.circularProgressBar]: [componentsNames.CircularProgressBar],
+
+  [otherSymbols.image]: [componentsNames.Image],
+
+  [otherSymbols.palette]: [
+    componentsNames.Palette,
+    sharedComponentsNames.FormField,
+    selectionComponentsNames.Thumbnail,
+  ],
+
+  [otherSymbols.skeleton]: [componentsNames.Skeleton],
+};
