@@ -1,0 +1,31 @@
+:import {
+  -st-from: "../../../Foundation/stylable/default-scroll-bar.st.css";
+  -st-named: defaultScrollBar;
+}
+
+.root {
+  -st-states: hideTopDivider, hideBottomDivider;
+  box-sizing: border-box;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.innerContentWrapper {
+  overflow-y: auto;
+  -st-mixin: defaultScrollBar;
+}
+
+.innerContent {
+  height: 100%;
+}
+
+.root:hideTopDivider .topDivider {
+  opacity: 0;
+  transition: opacity 100ms linear;
+}
+
+.root:hideBottomDivider .bottomDivider {
+  opacity: 0;
+  transition: opacity 100ms linear;
+}
