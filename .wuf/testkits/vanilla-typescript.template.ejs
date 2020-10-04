@@ -1,0 +1,72 @@
+import { BaseUniDriver } from 'wix-ui-test-utils/base-driver';
+import { BaseDriver } from 'wix-ui-test-utils/driver-factory';
+
+type VanillaTestkitFactory<T extends BaseDriver> = (
+  params: VanillaTestkitParams,
+) => T;
+
+type VanillaUniTestkitFactory<T extends BaseUniDriver> = (
+  params: VanillaTestkitParams,
+) => T;
+
+interface VanillaTestkitParams {
+  wrapper: HTMLElement;
+  dataHook: string;
+}
+
+import { TooltipDriver } from '../src/Tooltip/Tooltip.driver';
+export const tooltipTestkitFactory: VanillaTestkitFactory<TooltipDriver>;
+import { TooltipUniDriver } from '../src/Tooltip/TooltipNext/Tooltip.uni.driver';
+export const TooltipTestkit: VanillaUniTestkitFactory<TooltipUniDriver>;
+
+type DeprecatedVanillaTestkit = any;
+<%
+  const deprecated = [
+    'AutoCompleteComposite',
+    'GoogleAddressInputWithLabel',
+    'MultiSelectComposite',
+    'StatsWidget',
+    'SideMenuDrill',
+    'SideMenu',
+    'Draggable',
+    'FieldLabelAttributes',
+    'FieldWithSelectionComposite',
+  ];
+
+  const defaultExport = [
+    'Avatar',
+  ]
+
+  const htmlElement = [
+    'AddItem',
+    'Highlighter',
+    'ImageViewer',
+    'InputArea',
+    'MediaOverlay',
+    'MessageBoxFunctionalLayout',
+    'Modal',
+    'Table',
+    'TableActionCell'
+  ]
+
+  components
+    .filter(component => !component.noTestkit)
+    .filter(component => !component.manualExport)
+    .filter(component => !deprecated.includes(component.name))
+    .map(component => {
+      const isLegacy = component.vanillaLegacyTestkit;
+      const importName = component.name + (isLegacy ? 'Driver' : 'UniDriver')
+      const importPath = component.testkitPath || '../src/' + component.name + '/' + component.name + (isLegacy ? '.driver' : '.uni.driver')
+      const wrappedExport = defaultExport.includes(component.name) ? importName : '{ ' + importName + ' }'
+      const exportName = utils.toCamel(component.name) + 'TestkitFactory'
+      const testkitType = isLegacy ? 'VanillaTestkitFactory' : 'VanillaUniTestkitFactory'
+%>
+import <%= wrappedExport %> from '<%= importPath %>';
+export const <%= exportName %>: <%= testkitType %><<%= importName %><%- htmlElement.includes(component.name) ? '<HTMLElement>' : '' %>>;<% }) %>
+<%
+  components
+    .filter(component => deprecated.includes(component.name))
+    .map(component => {
+      const camelName = utils.toCamel(component.name)
+%>
+export const <%= camelName %>TestkitFactory: DeprecatedVanillaTestkit;<% }) %>
