@@ -1,0 +1,64 @@
+:import {
+  -st-from: "../Text/Text.st.css";
+  -st-default: Text;
+};
+
+:import {
+  -st-from: "../Sidebar/colors.st.css";
+  -st-named:
+    sidebarBackgroundColor, textColor,
+    sidebarLightBackgroundColor, lightTextColor
+}
+
+:import {
+  -st-from: "../Foundation/stylable/typography.st.css";
+  -st-named: fontBold;
+}
+
+:import {
+  -st-from: "../Sidebar/main.st.css";
+  -st-named: sidebarWidth
+}
+
+.root {
+  -st-states: skin(enum(dark, light));
+
+  padding: 27px 24px;
+  max-width: value(sidebarWidth);
+  box-sizing: border-box;
+}
+
+.root:skin(dark) {
+  background-color: value(sidebarBackgroundColor);
+  color: value(textColor);
+}
+
+.root:skin(light) {
+  background-color: value(sidebarLightBackgroundColor);
+  color: value(lightTextColor);
+}
+
+.title {
+  -st-extends: Text;
+
+  display: block;
+}
+
+.title:size(medium) {
+  font-size: 20px;
+}
+
+.title:size(medium):weight(bold) {
+  font-family: value(fontBold);
+}
+
+.subtitle {
+  -st-extends: Text;
+
+  display: block;
+  margin-top: 3px;
+}
+
+.subtitle:size(tiny) {
+  line-height: 18px;
+}

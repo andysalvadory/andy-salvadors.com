@@ -1,0 +1,68 @@
+:import {
+  -st-from: "../Foundation/stylable/colors.st.css";
+  -st-named: G30, R30, D10, D80;
+}
+
+:vars {
+  headerHeight: 66px;
+  titleWidth: 20%;
+  actionsWidth: 60%;
+  verticalMargins: 24px;
+}
+
+.overlay {
+  width: 100vw;
+  height: 100vh;
+  justify-content: center;
+}
+
+.header {
+  position: fixed;
+  background: value(D10);
+  height: value(headerHeight);
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 1;
+  color: value(D80);
+  padding: 18px 24px;
+}
+
+.title {
+  width: value(titleWidth);
+  max-width: value(titleWidth);
+}
+
+.actions {
+  width: value(actionsWidth);
+  max-width: value(actionsWidth);
+  display: flex;
+  justify-content: center;
+}
+
+.closeButton {
+  width: value(titleWidth);
+  max-width: value(titleWidth);
+  display: flex;
+  justify-content: flex-end;
+}
+
+.innerOverlay {
+  display: flex;
+  justify-content: center;
+  top: value(headerHeight);
+  height: calc(100vh - value(headerHeight));
+  position: relative;
+  overflow-y: auto;
+}
+
+.content {
+  margin-top: value(verticalMargins);
+}
+
+.content::after {
+  height: value(verticalMargins);
+  content: ' ';
+  display: block;
+}
