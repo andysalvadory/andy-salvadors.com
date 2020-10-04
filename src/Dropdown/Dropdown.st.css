@@ -1,0 +1,8 @@
+.showPointer {
+  -st-states: noBorder;
+  cursor: pointer;
+}
+
+.showPointer:noBorder {
+  border:none;
+}
