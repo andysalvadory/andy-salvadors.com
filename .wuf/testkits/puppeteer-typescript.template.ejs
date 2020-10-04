@@ -1,0 +1,56 @@
+import {Page} from 'puppeteer';
+import {BaseUniDriver} from 'wix-ui-test-utils/base-driver';
+
+type PuppeteerTestkitFactory<T> = (
+  params: PuppeteerTestkitParams
+) => Promise<T>;
+
+type PuppeteerUniTestkitFactory<T extends BaseUniDriver> = (
+  params: PuppeteerTestkitParams
+) => Promise<T>;
+
+interface PuppeteerTestkitParams {
+  dataHook: string;
+  page: Page;
+}
+
+type DeprecatedPuppeteerTestkit = any;
+
+<%
+  const deprecated = [
+    'Draggable',
+    'FieldLabelAttributes',
+  ];
+
+  const defaultExport = [
+    'Avatar',
+  ]
+
+  const withHTMLElement = [
+    'MediaOverlay'
+  ]
+
+  components
+    .filter(component => !component.noTestkit)
+    .filter(component => !component.noPuppeteerTestkit)
+    .filter(component => !component.manualExport)
+    .filter(component => !deprecated.includes(component.name))
+    .map(component => {
+      const camelName = utils.toCamel(component.name);
+      const isLegacy = component.puppeteerLegacyTestkit;
+      const importName = component.puppeteerTypeImportName || component.name + (isLegacy ? 'Driver' : 'UniDriver')
+      const importPath = component.puppeteerTestkitPath || component.testkitPath || '../src/' + component.name + '/' + component.name + (isLegacy ? '.puppeteer.driver' : '.uni.driver')
+      const wrappedImport = defaultExport.includes(component.name) ? importName : '{' + importName + '}'
+      const exportName = component.puppeteerTestkitExportName || camelName + 'TestkitFactory'
+      const testkitType = isLegacy ? 'PuppeteerTestkitFactory' : 'PuppeteerUniTestkitFactory'
+%>
+import <%= wrappedImport %> from '<%= importPath %>';
+export const <%= exportName %>: <%= testkitType %><<%= importName %><%- withHTMLElement.includes(component.name) ?  '<HTMLElement>' : ''%>>;<% }) %>
+
+<%
+  components
+    .filter(component => deprecated.includes(component.name))
+    .map(component => {
+      const name = component.puppeteerTestkitExportName || utils.toCamel(component.name) + 'TestkitFactory'
+%>
+export const <%= name %>: DeprecatedPuppeteerTestkit;<% }) %>
