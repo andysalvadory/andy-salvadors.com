@@ -1,0 +1,53 @@
+.notification {
+  width: 100%;
+  background-color: red;
+  box-sizing: border-box; /* does not include the margin*/
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  padding: 3px 6px;
+  height: 48px;
+}
+
+.button {
+  position: fixed;
+  top: 650px;
+}
+
+/* Animations */
+.enterMaxHeight {
+  max-height: 0;
+}
+
+.enterActiveMaxHeight {
+  max-height: 48px;
+  transition: max-height 300ms ease-in;
+}
+
+.exitMaxHeight {
+  max-height: 48px;
+}
+
+.exitActiveMaxHeight {
+  max-height: 0;
+  transition: max-height 300ms ease-in;
+}
+/* Content */
+.enterMaxHeight .contentMaxHeight {
+  margin-top: -48px;
+}
+
+.enterActiveMaxHeight .contentMaxHeight {
+  margin-top: 0;
+  transition: margin-top 300ms ease-in;
+}
+
+.exitMaxHeight .contentMaxHeight{
+  margin-top: 0;
+}
+
+.exitActiveMaxHeight .contentMaxHeight{
+  margin-top: -48px;
+  transition: margin-top 300ms ease-in;
+}

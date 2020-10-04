@@ -1,0 +1,52 @@
+.notification {
+  width: 100%;
+  background-color: red;
+  box-sizing: border-box; /* does not include the margin*/
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  //padding: 3px 6px;
+}
+
+.contentAutoHeight {
+  margin: 3px 6px;
+}
+
+
+/* Animations */
+.enterAutoHeight {
+  max-height: 0;
+}
+
+.enterActiveAutoHeight {
+  max-height: 72px;
+  transition: max-height 300ms cubic-bezier(0.0, 0.0, 0.2, 1);
+}
+
+.exitAutoHeight {
+  max-height: 72px;
+}
+
+.exitActiveAutoHeight {
+  max-height: 0;
+  transition: max-height 300ms cubic-bezier(0.0, 0.0, 0.2, 1);
+}
+/* Content */
+.enterAutoHeight .contentAutoHeight {
+  margin-top: -72px;
+}
+
+.enterActiveAutoHeight .contentAutoHeight {
+  margin-top: 0;
+  transition: margin-top 300ms cubic-bezier(0.4, 0.0, 1, 1);
+}
+
+.exitAutoHeight .contentAutoHeight{
+  margin-top: 0;
+}
+
+.exitActiveAutoHeight .contentAutoHeight{
+  margin-top: -72px;
+  transition: margin-top 300ms cubic-bezier(0.4, 0.0, 1, 1);
+}

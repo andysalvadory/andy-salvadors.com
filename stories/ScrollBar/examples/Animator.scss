@@ -1,0 +1,13 @@
+.notification {
+  width: 100%;
+  background-color: red;
+  box-sizing: border-box; /* does not include the margin*/
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  padding: 3px 6px;
+  height: auto;
+}
+
+

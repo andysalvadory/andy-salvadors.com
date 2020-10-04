@@ -1,0 +1,28 @@
+// This is targeting the internal Animator element that will get the dynamic `max-height` set by Animator,
+// We set is as an anchor for the `position:absolute` `notification` element to stick to.
+// Without it you will get the classic "fold" animation from animator.
+.animatorContent > * {
+  position: relative;
+}
+
+// This element is necessary to take the height of the `position:absolute` `notification` element, without it
+// animator won't be able to move the content below of the animated content correctly
+.wrapper {}
+
+.notification {
+  // This will make the element anchor to the animator internal element and will result the requested animation
+  position: absolute;
+  bottom: 0;
+  box-sizing: border-box; // important if you want your padding part of the final element height!
+
+  // This is the notification visual style, nothing here is obligatory for the animation purposes
+  background-color: red;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 20px;
+}
+
+
+
