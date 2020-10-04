@@ -1,0 +1,97 @@
+:import {
+  -st-from: "../Foundation/stylable/colors.st.css";
+  -st-named: D80, D10, B20, R20, G20, Y10, P20;
+}
+
+:vars {
+  listItemHeight: 18px;
+  inidicatorSize: 7px;
+  zIndex_NOTIFICATION: 4000;
+}
+
+.root {
+  -st-states: theme(enum(standard, error, success,warning,premium )), type(enum(local, global, sticky));
+  position: relative;
+  overflow: hidden;
+}
+
+.notification {
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  padding: 3px 12px;
+  min-height: 48px;
+  z-index: value(zIndex_NOTIFICATION);
+  transition: margin-top 300ms ease-in;
+}
+
+.root:theme(standard) .notification{
+  background-color: value(B20);
+}
+
+.root:theme(error) .notification{
+  background-color: value(R20);
+}
+
+.root:theme(success) .notification{
+  background-color: value(G20);
+}
+
+.root:theme(warning) .notification{
+  background-color: value(Y10);
+}
+
+.root:theme(premium) .notification{
+  background-color: value(P20);
+}
+
+/* Positions */
+.root:type(local) .notification{
+  position: absolute;
+  right: 0;
+  left: 0;
+}
+
+.root:type(global) .notification{
+  position: relative;
+  width: 100%;
+}
+
+.root:type(sticky) .notification{
+  position: fixed;
+  right: 0;
+  width: 100%;
+  top: 0;
+}
+
+.labelWrapper {
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+}
+
+.label {
+  max-width: 720px;
+  margin-right: 12px;
+  padding: 9px 0;
+}
+
+.button {
+  margin: 6px 0;
+}
+
+.textLink {
+  margin: 8px 0;
+}
+
+.iconStyling{
+  color: value(D80);
+  margin-right: 12px;
+  margin-top: 9px;
+}
+
+.closeButton {
+  position: absolute;
+  top: 15px;
+  right: 12px;
+}
