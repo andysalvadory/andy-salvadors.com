@@ -1,0 +1,22 @@
+import * as React from 'react';
+
+export interface ThumbnailProps {
+  dataHook?: string;
+  title?: React.ReactNode;
+  description?: React.ReactNode;
+  image?: React.ReactNode;
+  size?: ThumbnailSize;
+  selected?: boolean;
+  disabled?: boolean;
+  hideSelectedIcon?: boolean;
+  backgroundImage?: React.ReactNode;
+  onClick?: (
+    event: React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>,
+  ) => void;
+  width?: string | number;
+  height?: string | number;
+}
+
+export default class Thumbnail extends React.PureComponent<ThumbnailProps> {}
+
+export type ThumbnailSize = 'tiny' | 'small' | 'medium';
