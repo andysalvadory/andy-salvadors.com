@@ -1,0 +1,39 @@
+:import {
+  -st-from: "../Foundation/stylable/colors.st.css";
+  -st-named: D10;
+}
+
+:import {
+  -st-from: "../DropdownBase/DropdownBase.st.css";
+  -st-default: DropdownBase;
+}
+
+.root {
+  -st-mixin:DropdownBase;
+  display: block;
+}
+
+.nativeSelectWrapper {
+  position: relative;
+}
+
+.nativeSelect {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  appearance: none;
+  background: transparent;
+  color: transparent;
+}
+.nativeSelect:not(:focus) {
+  border: transparent;
+}
+
+.nativeSelectt:focus {
+  /* @include FocusBox();*/
+}
+
+.nativeOption {
+  color: value(D10);
+}

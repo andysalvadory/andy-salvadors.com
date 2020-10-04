@@ -1,0 +1,11 @@
+.showPointer, .showPointer input {
+  cursor: pointer;
+}
+
+.noBorder {
+  border:none;
+}
+
+.no-border>div {
+  border:none;
+}
