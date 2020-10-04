@@ -1,0 +1,16 @@
+:import {
+  -st-from: "./Text.st.css";
+  -st-default: Text;
+}
+
+.root {
+  -st-extends: Text;
+  -st-states: caption(enum(c1))
+}
+
+/* C1 */
+.c1,
+.root:size(medium):weight(bold):caption(c1) {
+  font-size: 10px;
+  line-height: 12px;
+}

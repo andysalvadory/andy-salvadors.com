@@ -1,0 +1,39 @@
+:vars {
+  modalBoxPadding: 48px;
+}
+
+:import {
+  -st-from: "../Foundation/stylable/spacing.st.css";
+  -st-named: spacing24, spacing30, spacing42;
+}
+
+:import {
+  -st-from: "../BaseModalLayout/BaseModalLayout.st.css";
+  -st-default: BaseModalLayout
+}
+
+/* Extending BaseModalLayout */
+.root {
+  -st-extends: BaseModalLayout;
+  -st-states: removeContentPadding;
+  width: calc(100% - (value(modalBoxPadding) * 2) );
+  max-width: 1254px;
+  min-width: 510px;
+}
+
+/* Extending of BaseModalLayout Blocks */
+.root:not(:removeContentPadding)::content::innerContent {
+  padding: 0 value(spacing30);
+}
+
+.root::header::innerContent {
+  padding: value(spacing24) value(spacing42) value(spacing24) value(spacing30);
+}
+
+:global(.rtl) .root::header::innerContent {
+  padding: value(spacing24) value(spacing30) value(spacing24) value(spacing42);
+}
+
+.root::footnote::innerContent {
+  justify-content: flex-start;
+}
