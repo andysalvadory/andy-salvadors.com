@@ -1,0 +1,158 @@
+:import {
+  -st-from: "../Foundation/stylable/colors.st.css";
+  -st-named: D80, D10, B20, R20, G20, Y10, P20;
+}
+
+:vars {
+  listItemHeight: 18px;
+  inidicatorSize: 7px;
+  /*Animations*/
+  easeOutQuint: cubic-bezier(0.23, 1, 0.32, 1);
+  easeInOutSine: cubic-bezier(0.445, 0.05, 0.55, 0.95);
+  zIndex_NOTIFICATION: 4000;
+}
+
+.root {
+  -st-states: theme(enum(standard, error, success,warning,premium )), type(enum(local, global, sticky));
+  position: relative;
+}
+
+.notification {
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
+  padding: 3px 12px;
+  min-height: 48px;
+  z-index: value(zIndex_NOTIFICATION);
+}
+
+.root:theme(standard) .notification{
+  background-color: value(B20);
+}
+
+.root:theme(error) .notification{
+  background-color: value(R20);
+}
+
+.root:theme(success) .notification{
+  background-color: value(G20);
+}
+
+.root:theme(warning) .notification{
+  background-color: value(Y10);
+}
+
+.root:theme(premium) .notification{
+  background-color: value(P20);
+}
+
+/* Positions */
+.root:type(local) .notification{
+  position: absolute;
+  right: 0;
+  left: 0;
+}
+
+.root:type(global) .notification{
+  position: relative;
+  width: 100%;
+}
+
+.root:type(sticky) .notification{
+  position: fixed;
+  right: 0;
+  width: 100%;
+  top: 0;
+}
+
+.labelWrapper {
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+}
+
+.label {
+  max-width: 720px;
+  margin-right: 12px;
+  padding: 9px 0;
+}
+
+.button {
+  margin: 6px 0;
+}
+
+.textLink {
+  margin: 8px 0;
+}
+
+.iconStyling{
+  color: value(D80);
+  margin-right: 12px;
+  margin-top: 9px;
+}
+
+.closeButton {
+  position: absolute;
+  top: 15px;
+  right: 12px;
+}
+
+/* Animations */
+.notificationAnimationEnter {
+  transition: all 0.4s cubic-bezier(0.895, 0.03, 0.685, 0.22);
+  max-height: 0;
+}
+
+.notificationAnimationEnter .label {
+  transition: all 0.4s value(easeOutQuint) 0.1s;
+  opacity: 0;
+  transform: translateY(-70px);
+}
+
+.notificationAnimationEnter .button {
+  transition: all 0.16s value(easeOutQuint) 0.2s;
+  transform: scale(0.6);
+  opacity: 0.5;
+}
+
+.notificationAnimationEnterActive {
+  max-height: 500px;
+}
+
+.notificationAnimationEnterActive .label {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.notificationAnimationEnterActive  .button {
+  transform: scale(1);
+  opacity: 1;
+}
+
+.notificationAnimationExit {
+  max-height: 500px;
+}
+
+.notificationAnimationExit .label,
+.notificationAnimationExit .button,
+.notificationAnimationExit .closeButton {
+  opacity: 1;
+}
+
+.notificationAnimationExitActive {
+  transition: all 0.25s value(easeInOutSine) 0.1s;
+  max-height: 0;
+}
+
+.notificationAnimationExitActive .label {
+  transition: all 0.25s value(easeInOutSine);
+  opacity: 0.5;
+  transform: translateY(-70px);
+}
+
+.notificationAnimationExitActive .button,
+.notificationAnimationExitActive .closeButton {
+  transition: all 0.12s value(easeInOutSine);
+  opacity: 0;
+}
