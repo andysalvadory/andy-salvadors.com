@@ -1,0 +1,47 @@
+:import {
+  -st-from: "../Text/Text.st.css";
+  -st-default: Text;
+}
+
+:import {
+  -st-from: "../PopoverMenu/PopoverMenu.st.css";
+  -st-default: PopoverMenu;
+}
+
+:import {
+  -st-from: "wix-ui-core/dist/src/components/popover/Popover.st.css";
+  -st-default: Popover;
+}
+
+.root {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  height: 36px;
+  position: relative;
+}
+
+.popoverMenu Text {
+  white-space: nowrap;
+}
+
+.hoverSlot {
+  display: flex;
+}
+
+.hoverSlot > button,
+.hoverSlot > Popover::popoverElement > button {
+  margin: 0 6px;
+  transition-property: background, border;
+}
+
+.hoverSlot.onHover {}
+.hoverSlot.notOnHover {}
+.placeholderIcon {}
+
+:global(.rtl) .placeholderIcon svg {
+  transform: scaleX(-1);
+}
+:global([dir='rtl']) .placeholderIcon svg {
+  transform: scaleX(-1);
+}
