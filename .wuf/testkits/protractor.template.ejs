@@ -1,0 +1,48 @@
+import 'regenerator-runtime/runtime';
+import {
+  protractorTestkitFactoryCreator,
+  protractorUniTestkitFactoryCreator,
+} from 'wix-ui-test-utils/protractor';
+
+// here for historical reasons, should probably deprecate it
+export {
+  waitForVisibilityOf,
+  scrollToElement,
+} from 'wix-ui-test-utils/protractor';
+
+import tooltipDriverFactory from '../src/Tooltip/Tooltip.protractor.driver';
+import { tooltipDriverFactory as tooltipNextDriverFactory } from '../src/Tooltip/TooltipNext/Tooltip.uni.driver';
+
+export const tooltipTestkitFactory = protractorTestkitFactoryCreator(
+  tooltipDriverFactory,
+);
+
+export const TooltipTestkit = protractorUniTestkitFactoryCreator(
+  tooltipNextDriverFactory,
+);
+<%
+  components
+  .filter(component => !component.noTestkit)
+  .filter(component => !component.noProtractorTestkit)
+  .filter(component => !component.manualExport)
+  .map(component => {
+    const camelName = utils.toCamel(component.name);
+    const driverFactory = camelName + 'DriverFactory';
+    const driverPath = component.protractorTestkitPath || component.testkitPath || [
+      '../src',
+      component.name,
+      component.name + '.protractor.driver',
+    ].join('\/');
+
+    const testkitName = camelName + 'TestkitFactory';
+    const factoryName = component.protractorUnidriver || component.unidriver ? 'protractorUniTestkitFactoryCreator' : 'protractorTestkitFactoryCreator';
+    const exportName = component.protractorTestkitExportName || testkitName;
+
+    if (component.namedProtractorTestkitExport) { %>
+import { <%= component.protractorTestkitImportName || driverFactory %> } from '<%= driverPath %>';<% } else { %>
+import <%= driverFactory %> from '<%= driverPath %>';<% } %>
+
+export const <%= exportName %> = <%= factoryName%>(
+  <%= component.protractorTestkitImportName || driverFactory %>,
+);
+<% }) %>

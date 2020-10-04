@@ -1,0 +1,86 @@
+:import {
+  -st-from: "wix-ui-core/dist/src/hocs/Focusable/Focusable.st.css";
+  -st-default: Focusable;
+}
+
+:import {
+    -st-from: "../../Text/Text.st.css";
+    -st-default: Text;
+}
+:import {
+    -st-from: "../../Foundation/stylable/colors.st.css";
+    -st-named: D55, D40, B10, B20, R10, F00;
+}
+
+:import {
+    -st-from: "./StepCircle/StepCircle.st.css";
+    -st-named: stepCircleWidth, stepCircleMarginRight;
+    -st-default: StepCircle;
+}
+
+.root {
+    -st-extends: Focusable;
+    -st-states: disabled, selected;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    width: 100%;
+    outline: none;
+}
+
+.root:disabled {
+    cursor: default;
+}
+
+.root:selected {
+    cursor: default;
+}
+
+.stepTextWrapper {
+    width: calc(100% - value(stepCircleWidth) - value(stepCircleMarginRight));
+}
+
+.stepText {
+    -st-extends: Text;
+    -st-states: disabled, selected, error, stepHover;
+    cursor: pointer;
+}
+
+.stepCircle {
+    -st-extends: StepCircle;
+    flex-shrink: 0;
+}
+
+.stepText:disabled {
+    color: value(D40);
+    cursor: default;
+}
+
+.stepText:selected {
+    color: value(B10);
+    cursor: default;
+}
+
+.stepText:stepHover {
+    color: value(B10);
+}
+
+.stepText:disabled:stepHover {
+    color: value(D40);
+}
+
+.stepText:error {
+    color: value(R10);
+}
+
+.stepText:error:selected {
+    color: value(R10);
+}
+
+.root:focus-visible:not(:disabled) .stepCircle {
+  box-shadow: 0 0 0 3px value(F00);
+}
+
+.root:selected:focus-visible:not(:disabled) .stepCircle {
+  box-shadow: 0 0 0 3px value(F00);
+}

@@ -1,0 +1,68 @@
+:import {
+  -st-from: "wix-ui-core/dist/src/hocs/Focusable/Focusable.st.css";
+  -st-default: Focusable;
+}
+
+:import {
+  -st-from: "../Foundation/stylable/colors.st.css";
+  -st-named: B00, B10,F00;
+}
+
+:import {
+  -st-from: "wix-ui-core/dist/src/themes/backoffice/colors.st.css";
+  -st-named: B00-24,B00-42 ;
+}
+
+:vars {
+  smallWidth: 24px;
+  mediumWidth: 40px;
+}
+
+.root {
+  display: grid;
+  grid-gap: 12px;
+  -st-states: size(string);
+}
+.root:size(small) {
+  grid-template-columns: repeat(auto-fill, 24px);
+}
+.root:size(medium) {
+  grid-template-columns: repeat(auto-fill, 40px);
+}
+
+.swatch {
+  -st-extends: Focusable;
+  -st-states: selected, size(string), transparent;
+  border-radius: 4px;
+  border: solid 1px value(B00-24);
+  cursor: pointer;
+
+  /* Disable native focus */
+  outline: none;
+}
+.swatch:hover {
+  border-color: value(B00-42);
+}
+.swatch:selected {
+  box-shadow: 0 0 0 2px #ffffff, 0 0 0 3px value(B10);
+}
+.swatch:size(small) {
+  width: value(smallWidth);
+  height: value(smallWidth);
+}
+.swatch:size(medium) {
+  width: value(mediumWidth);
+  height: value(mediumWidth);
+}
+.swatch:transparent {
+  background: linear-gradient(to top left,
+           rgba(255,255,255,1) 0%,
+           rgba(255,255,255,1) calc(50% - 0.8px),
+           rgba(214,69,61,1) 50%,
+           rgba(255,255,255,1) calc(50% + 0.8px),
+           rgba(255,255,255,1) 100%)
+}
+
+.swatch:not(:disabled):focus-visible {
+  box-shadow: 0 0 0 3px value(F00);
+}

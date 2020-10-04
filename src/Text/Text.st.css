@@ -1,0 +1,118 @@
+:import {
+  -st-from: "wix-ui-backoffice/dist/src/typography.st.css";
+  -st-named: fontLight, fontRoman, fontMedium, fontBold;
+}
+
+:import {
+  -st-from: "wix-ui-core/dist/src/themes/backoffice/colors.st.css";
+  -st-named: 
+  B10, B20,
+  D10, D20, D40, D80,
+  D10-30, D80-70,
+  G10, P10, R10, WHITE, D55;
+}
+
+.root {
+  -st-states: 
+    size(enum(small, medium, tiny)),
+    secondary,
+    skin(enum(standard, success, error, premium, disabled)),
+    light,
+    weight(enum(thin, normal, bold)), disabled;
+
+  white-space: pre-line;
+}
+
+.root:size(medium), .root:size(medium):secondary {
+  font-size: 16px;
+  line-height: 24px;
+}
+
+.root:size(small), .root:size(small):secondary {
+  font-size: 14px;
+  line-height: 18px;
+}
+
+.root:size(tiny), .root:size(tiny):secondary {
+  font-size: 12px;
+  line-height: 15px;
+}
+
+.root:skin(standard) {
+  color: value(D10);
+}
+
+.root:skin(standard):light {
+  color: value(D80);
+}
+
+.root:skin(standard):secondary {
+  color: value(D20);
+}
+
+.root:skin(standard):light:secondary {
+  color: value(D40);
+}
+
+.root:skin(success),
+.root:skin(success):light,
+.root:skin(success):secondary {
+  color: value(G10);
+}
+
+.root:skin(error),
+.root:skin(error):light,
+.root:skin(error):secondary {
+  color: value(R10);
+}
+
+.root:skin(premium),
+.root:skin(premium):light,
+.root:skin(premium):secondary {
+  color: value(P10);
+}
+
+.root:skin(disabled),
+.root:skin(disabled):secondary {
+  color: value(D10-30);
+}
+
+.root:skin(disabled):light {
+  color: value(D80-70);
+}
+
+.root:size(medium):weight(bold),
+.root:size(small):weight(bold) {
+  font-family: value(fontMedium);
+}
+
+.root:size(tiny):weight(bold) {
+  font-family: value(fontBold);
+}
+
+.root:size(medium):weight(normal),
+.root:size(small):weight(normal) {
+  font-family: value(fontRoman);
+}
+
+.root:size(tiny):weight(normal) {
+  font-family: value(fontMedium);
+}
+
+.root:size(medium):weight(thin),
+.root:size(small):weight(thin) {
+  font-family: value(fontLight);
+}
+
+.root:size(tiny):weight(thin) {
+  font-family: value(fontRoman);
+}
+
+.root > a {
+  color: value(B10);
+  text-decoration: none;
+}
+
+.root > a:hover {
+  color: value(B20);
+}

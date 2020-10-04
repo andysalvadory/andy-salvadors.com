@@ -1,0 +1,61 @@
+:import {
+  -st-from: 'wix-ui-core/dist/src/hocs/Focusable/Focusable.st.css';
+  -st-default: Focusable;
+}
+
+:import {
+  -st-from: "../Foundation/stylable/colors.st.css";
+  -st-named: D10, F00, B40, B00-42, B30, B10, B00;
+}
+
+:import {
+  -st-from: "../Foundation/stylable/mixins/calc_rgba.js";
+  -st-default: calc_rgba;
+}
+
+.root {
+  -st-extends: Focusable;
+  -st-states: fill;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+
+  border: none;
+  padding: 0;
+  border-radius: 4px;
+ 
+  background-color: value(B40);
+
+  outline:none;
+}
+
+.root:fill {
+  border: solid 1px calc_rgba(value(B00), 0.48);
+}
+
+.root:hover, .root:active {
+  background-color: value(B30);
+}
+
+.root:disabled {
+  background-color: calc_rgba(value(D10),0.1);
+}
+
+.root:disabled > svg {
+  color: calc_rgba(value(D10), 0.3);
+}
+
+.root:focus-visible {
+  box-shadow: 0 0 0 3px value(F00);
+}
+
+.root > svg {
+  color: value(B10);
+}
+
+.proportion {
+  min-width: 24px;
+}

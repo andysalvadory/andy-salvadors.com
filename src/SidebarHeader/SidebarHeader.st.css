@@ -1,0 +1,47 @@
+:import {
+  -st-from: "../Text/Text.st.css";
+  -st-default: Text;
+};
+
+:import {
+  -st-from: "../Sidebar/colors.st.css";
+  -st-named: sidebarBackgroundColor
+}
+
+:import {
+  -st-from: "wix-ui-backoffice/dist/src/typography.st.css";
+  -st-named: fontBold;
+}
+
+.root {
+  padding: 27px 24px;
+  min-height: 102px;
+  max-width: 222px;
+  box-sizing: border-box;
+  background-color: value(sidebarBackgroundColor);
+}
+
+.title {
+  -st-extends: Text;
+
+  display: block;
+}
+
+.title:size(medium) {
+  font-size: 20px;
+}
+
+.title:size(medium):weight(bold) {
+  font-family: value(fontBold);
+}
+
+.subtitle {
+  -st-extends: Text;
+
+  display: block;
+  margin-top: 3px;
+}
+
+.subtitle:size(tiny) {
+  line-height: 18px;
+}

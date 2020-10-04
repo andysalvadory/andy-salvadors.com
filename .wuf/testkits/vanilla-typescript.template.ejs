@@ -1,0 +1,38 @@
+import {BaseUniDriver} from 'wix-ui-test-utils/base-driver';
+import {BaseDriver} from 'wix-ui-test-utils/driver-factory';
+import AvatarDriver from '../src/Avatar/Avatar.uni.driver';
+import {TooltipDriver as TooltipUniDriver} from '../src/Tooltip/TooltipNext/Tooltip.uni.driver';
+import {TooltipDriver} from '../src/Tooltip/Tooltip.driver';
+
+declare namespace VanillaTestkit {
+  type VanillaTestkitFactory<T extends BaseDriver> = (
+    params: VanillaTeskitParams
+  ) => T;
+
+  type VanillaUniTestkitFactory<T extends BaseUniDriver> = (
+    params: VanillaTeskitParams
+  ) => T;
+
+  interface VanillaTeskitParams {
+    wrapper: HTMLElement;
+    dataHook: string;
+  }
+<%
+  const typed = {
+    Avatar: 'VanillaUniTestkitFactory<AvatarDriver>'
+  };
+
+  components
+  .filter(component => !component.noTestkit)
+  .filter(component => !component.manualExport)
+  .map(component => {
+    const camelName = utils.toCamel(component.name);
+    const testkitName = camelName + 'TestkitFactory';
+    const type = typed[component.name] || 'any';
+%>
+  export const <%= testkitName %>: <%- type %>;<% }) %>
+  export const tooltipTestkitFactory: VanillaTestkitFactory<TooltipDriver>;
+  export const TooltipTestkit: VanillaUniTestkitFactory<TooltipUniDriver>;
+}
+
+export = VanillaTestkit;

@@ -1,0 +1,76 @@
+:import {
+  -st-from: 'wix-ui-core/dist/src/hocs/Focusable/Focusable.st.css';
+  -st-default: Focusable;
+}
+
+:import {
+  -st-from: "../Foundation/stylable/colors.st.css";
+  -st-named: B00, B00-24, B00-42, B30, B40, B10, F00, D80, D10, D10-30;
+}
+
+:import {
+  -st-from: "../Foundation/stylable/mixins/calc_rgba.js";
+  -st-default: calc_rgba;
+}
+
+.root {
+  -st-extends: Focusable;
+  -st-states: selected, mode(string), noColor, clickable;
+  border-radius: 6px;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid value(B00-24);
+
+  /* Disable native focus */
+  outline: none;
+}
+
+.root:mode(fill):noColor:not(:disabled) {
+  border-color: value(B30);
+  background: linear-gradient(
+    to top left,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(255, 255, 255, 1) calc(50% - 0.8px),
+    rgba(214, 69, 61, 1) 50%,
+    rgba(255, 255, 255, 1) calc(50% + 0.8px),
+    rgba(255, 255, 255, 1) 100%
+  );
+}
+
+.root:mode(add):noColor:not(:disabled) {
+  border: none;
+  background-color: value(B40);
+}
+
+.root:mode(add):not(noColor):not(:disabled):hover {
+  border-color: value(B00-42);
+}
+
+.root:mode(add):not(:disabled) {
+  cursor: pointer;
+}
+
+.proportion {
+  min-width: 24px;
+}
+
+.root:mode(fill):selected:not(:disabled) {
+  box-shadow: 0 0 0 2px #ffffff, 0 0 0 3px value(B10);
+}
+
+.root:not(:disabled):clickable:focus-visible {
+  box-shadow: 0 0 0 3px value(F00);
+}
+
+.root:disabled {
+  background-color: calc_rgba(value(D10),0.1);
+  border: none;
+}
+
+.root:disabled .icon {
+  color: value(D10-30) !important;
+}

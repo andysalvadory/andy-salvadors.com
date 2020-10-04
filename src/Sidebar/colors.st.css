@@ -1,0 +1,9 @@
+/* At the moment, it was decided by UX to not include these colors as part of the design system palette */
+:vars {
+  sidebarBackgroundColor:#23263c;
+  hoveredBackgroundColor:#2e3249;
+  selectedBackgroundColor:#3b3f57;
+  disabledBackgroundColor:#23263c;
+  disabledTextColor:#8e909b;
+  dividerColor: #434567;
+}

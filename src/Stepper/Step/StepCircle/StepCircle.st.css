@@ -1,0 +1,110 @@
+:import {
+  -st-from: "../../../Text/Text.st.css";
+  -st-default: Text;
+}
+
+:import {
+  -st-from: "../../../Foundation/stylable/colors.st.css";
+  -st-named: B10, B20, D55, D80, R10, F00;
+}
+
+:vars {
+  stepCircleWidth: "30px";
+  stepCircleMarginRight: "12px";
+}
+
+.root {
+  -st-states: disabled(boolean), selected(boolean), error(boolean), stepHover(boolean), completed(boolean);
+  border-radius: 16px;
+  width: value(stepCircleWidth);
+  height: 30px;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: value(stepCircleMarginRight);
+  border: 1px solid value(B10);
+  color: value(B10);
+}
+
+.root:disabled {
+  background-color: value(D55);
+  border-color: value(D55);
+}
+
+.root:hover:disabled {
+  background-color: value(D55);
+}
+.root:stepHover:disabled {
+  background-color: value(D55);
+}
+
+.root:hover {
+  background-color: value(B20);
+  color: value(D80);
+  border: 0px;
+}
+
+.root:stepHover {
+  background-color: value(B20);
+  color: value(D80);
+  border: 0px;
+}
+
+.root:selected {
+  background-color: value(B10);
+  border: 0px;
+}
+
+.root:completed:selected {
+  color: value(D80);
+  border: 0px;
+}
+
+.root:error {
+  background-color: value(D80);
+  border-color: value(R10);
+  color: value(R10);
+}
+
+.root:error:selected {
+  background-color: value(R10);
+  border-color: value(D80);
+  color: value(D80);
+}
+
+.root:error:hover {
+  background-color: value(R10);
+  border-color: value(D80);
+  color: value(D80);
+}
+
+.root:error:stepHover {
+  background-color: value(R10);
+  border-color: value(D80);
+  color: value(D80);
+}
+
+.text {
+  -st-extends: Text;
+}
+
+.root:disabled .text > a {
+  color: value(D80);
+}
+
+.root:selected .text > a {
+  color: value(D80);
+}
+
+.root:disabled .text > a:hover {
+}
+
+.root:stepHover .text > a {
+  color: value(D80);
+}
+
+.root:stepHover .text > a:hover {
+  color: value(D80);
+}
+

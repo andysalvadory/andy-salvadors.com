@@ -1,0 +1,15 @@
+:import {
+  -st-from: "../Sidebar/colors.st.css";
+  -st-named: dividerColor
+}
+
+.root {
+  border: 0;
+  height: 1px;
+  margin: 20px 24px;
+  background-color: value(dividerColor);
+}
+
+.fullWidth {
+  margin: 0;
+}

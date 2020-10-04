@@ -1,0 +1,390 @@
+{
+  "name": "wix-style-react",
+  "description": "wix-style-react",
+  "version": "6.58.0",
+  "main": "./dist/src/index.js",
+  "module": "./dist/es/src/index.js",
+  "sideEffects": [
+    "./.storybook/**/*.*",
+    "./stories/**/*.*",
+    "./src/**/*.scss"
+  ],
+  "files": [
+    "dist",
+    "beta",
+    "src",
+    "scripts",
+    "babel.config.js",
+    "testkit",
+    "es",
+    "new-icons",
+    "*.scss",
+    "*.js",
+    "*.d.ts"
+  ],
+  "bin": {
+    "migrate-to-icons-v2": "./scripts/migrate-to-icons-v2/runner.js"
+  },
+  "scripts": {
+    "start": "./scripts/npm-start.sh",
+    "pretest": "if [ ! \"$agentType\" = \"pullrequest\" ]; then npm run lint && ./scripts/ensure-dist.sh; fi",
+    "test": "if [ ! \"$agentType\" = \"pullrequest\" ]; then npm run test:unit && npm run test:eyes-storybook && npm run test:e2e && npm run test:types && npm run sanity; fi",
+    "test1:unit": "npm run test:unit",
+    "test2:visual": "npm run test:eyes-storybook",
+    "test3:e2e": "YOSHI_PROTRACTOR_CONFIG=./protractor1.conf.js npm run test:e2e",
+    "test4:e2e": "YOSHI_PROTRACTOR_CONFIG=./protractor2.conf.js npm run test:e2e",
+    "test5:types": "npm run test:types",
+    "test6:sanity": "npm run lint && npm run sanity",
+    "test:unit": "yoshi test --jest",
+    "test:watch": "yoshi test --jest --watch",
+    "pretest:e2e": "./scripts/ensure-dist.sh",
+    "test:e2e": "npm run test:e2e-runtime && concurrently 'npm run test:e2e-only' 'node scripts/e2e-server.js' --names 'protractor,e2e-server' --success first --kill-others",
+    "test:e2e-only": "NODE_ENV=production yoshi test --protractor",
+    "test:e2e-runtime": "cd ./test-runtime/imports && NODE_ENV=production npm run test",
+    "test:eyes-storybook": "eyes-storybook -c ./.storybook-test",
+    "test:types": "tsc --noEmit -p tsconfig.declarations.json",
+    "test:performance": "npm run bundles:generate && npm install --no-save @wix/perfer && perfer --verbose",
+    "copy-public-styles": "cp src/*.scss .",
+    "prebuild": "npm run update-components && npm run update-components:beta",
+    "build": "npm run lint && npm run proxy-wix-ui-icons && npm run transpile && concurrently 'npm run storybook:build' 'npm run build-puppeteer-testkit' --kill-others-on-fail",
+    "build-puppeteer-testkit": "webpack --config ./testkit/webpack.config.js",
+    "travis": "npm run lint && npm run proxy-wix-ui-icons && npm run transpile && npm run test:unit -- --maxWorkers=4",
+    "prepublishOnly": "npm run bundle",
+    "bundle": "webpack --config ./node_modules/yoshi/config/webpack.config.client.js --debug --display-error-details --progress",
+    "transpile": "node ./scripts/transpile.js",
+    "transpile:watch": "babel src --out-dir dist/es/src --copy-files --watch --plugins=@babel/plugin-syntax-dynamic-import",
+    "postbuild": "npm run copy-public-styles && npm run export-components",
+    "pr-postbuild": "npm install teamcity-surge-autorelease@^1.0.0 --no-save && teamcity-surge-autorelease",
+    "prestorybook": "./scripts/ensure-dist.sh && npm run generate-autodocs-registry",
+    "storybook:build": "npm run prestorybook && build-storybook",
+    "storybook:static": "node scripts/e2e-server.js",
+    "storybook": "npm run prestorybook && start-storybook -p 6006",
+    "postpublish": "if [ \"$NPM_PUBLISH_TYPE\" == \"re-publish\" ]; then npm install && npm run build && npm install @wix/teamcity-surge-autorelease@^1.0.0 --no-save && teamcity-surge-autorelease --ver=v6; fi",
+    "export-components": "import-path --path src --dts",
+    "lint": "yoshi lint --fix",
+    "proxy-wix-ui-icons": "node scripts/proxy-wix-ui-icons",
+    "generate": "wuf generate --output src --codemods .wuf/generator/codemods --templates .wuf/generator/templates",
+    "postgenerate": "npm run update-components",
+    "generate:beta": "wuf generate --output src/beta --codemods .wuf/beta/generator/codemods --templates .wuf/generator/templates/src",
+    "postgenerate:beta": "npm run update-components:beta",
+    "generate-autodocs-registry": "node scripts/generate-autodocs-registry",
+    "update-components": ".wuf/update-components.sh",
+    "update-components:beta": ".wuf/update-components-beta.sh",
+    "bundles:generate": "node ./scripts/bundlify-components/bundlify.js",
+    "bundles:analyse": "node ./scripts/bundlify-components/bundles-analyze.js",
+    "eyes-storybook-debug": "start-storybook -c ./.storybook-test -p 6007",
+    "make-async-spec": "npx jscodeshift -t scripts/unidriver-migration/src/make-async/make-async.js",
+    "sanity": "autotools-sanity --files './src/**/*.meta.js'",
+    "components-size": "npm run generate-components-bundles && source-map-explorer ./bundles/*.js"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "yoshi": {
+    "entry": {
+      "app": "index.js"
+    },
+    "externals": {
+      "react": "React",
+      "react-dom": "ReactDOM",
+      "Wix": "Wix"
+    },
+    "externalUnprocessedModules": [
+      "get-own-enumerable-property-symbols",
+      "stringify-object"
+    ],
+    "exports": "wix-style-react"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wix/wix-style-react.git"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/wix/wix-style-react/issues"
+  },
+  "homepage": "https://github.com/wix/wix-style-react#readme",
+  "devDependencies": {
+    "@applitools/eyes-storybook": "2.6.25",
+    "@babel/cli": "^7.2.3",
+    "@babel/core": "^7.2.2",
+    "@babel/parser": "^7.3.1",
+    "@babel/plugin-proposal-class-properties": "^7.3.0",
+    "@babel/plugin-proposal-export-namespace-from": "^7.2.0",
+    "@babel/plugin-transform-modules-commonjs": "^7.2.0",
+    "@babel/plugin-transform-runtime": "7.2.0",
+    "@babel/preset-env": "^7.3.1",
+    "@babel/preset-react": "^7.0.0",
+    "@emotion/core": "0.13.1",
+    "@storybook/addon-google-analytics": "^4.1.11",
+    "@storybook/addon-links": "^4.1.11",
+    "@storybook/addon-options": "^4.1.11",
+    "@storybook/react": "^4.1.11",
+    "@stylable/dom-test-kit": "^0.1.6",
+    "@testing-library/react": "^8.0.1",
+    "@types/enzyme": "^3.9.1",
+    "@types/react": "16.8.4",
+    "@types/react-dom": "^16.0.5",
+    "@ui-autotools/registry": "^3.4.0",
+    "@ui-autotools/sanity": "^2.8.2",
+    "babel-core": "^7.0.0-bridge.0",
+    "babel-loader": "^8.0.5",
+    "babel-plugin-dynamic-import-node": "^2.3.0",
+    "chalk": "^2.4.1",
+    "commander": "^2.19.0",
+    "concurrently": "^3.4.0",
+    "copy": "^0.3.2",
+    "enzyme": "^3.3.0",
+    "enzyme-adapter-react-15": "^1.2.0",
+    "eslint-plugin-react": "^6.8.0",
+    "execa": "^1.0.0",
+    "express": "^4.16.4",
+    "eyes.it": "^2.0.0",
+    "globby": "^8.0.1",
+    "husky": "^2.3.0",
+    "identity-obj-proxy": "^3.0.0",
+    "import-path": "^1.0.0",
+    "jest-yoshi-preset": "^4.10.3",
+    "lint-staged": "^7.3.0",
+    "mkdirp": "^0.5.1",
+    "ora": "^3.0.0",
+    "progress": "^2.0.3",
+    "prompts": "^1.2.1",
+    "protractor": "^5.4.1",
+    "protractor-browser-logs": "^1.0.351",
+    "puppeteer": "^1.12.2",
+    "query-string": "^6.1.0",
+    "react": "^15.5.4",
+    "react-dnd-test-backend": "^5.0.1",
+    "react-docgen": "^2.15.0",
+    "react-dom": "^15.5.4",
+    "react-element-to-jsx-string": "^13.0.0",
+    "react-lifecycles-compat": "^3.0.4",
+    "react-test-renderer": "^15.5.4",
+    "react-test-utils": "^0.0.1",
+    "regenerator-runtime": "^0.11.0",
+    "rimraf": "^2.6.3",
+    "simple-git": "^1.107.0",
+    "sinon": "^1.17.6",
+    "tempy": "^0.2.1",
+    "terser": "3.14.0",
+    "thread-loader": "^2.1.2",
+    "typescript": "~3.2.4",
+    "url-loader": "^1.1.2",
+    "velocity": "^0.7.2",
+    "wait-for-cond": "^1.0.3",
+    "webpack": "~4.31.0",
+    "webpack-cli": "^3.2.3",
+    "wix-storybook-utils": "^3.0.0",
+    "wix-ui-framework": "^3.1.1",
+    "yoshi": "^4.10.4",
+    "yoshi-config": "^4.10.2",
+    "yoshi-helpers": "^4.10.2",
+    "yoshi-runtime": "^1.0.190",
+    "yoshi-style-dependencies": "^4.6.0"
+  },
+  "peerDependencies": {
+    "react": "^15.0.0",
+    "react-dom": "^15.0.0"
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/",
+    "logLevel": "verbose"
+  },
+  "dependencies": {
+    "@babel/runtime": "^7.3.1",
+    "bootstrap-sass": "^3.3.7",
+    "classnames": "^2.2.5",
+    "color": "^2.0.0",
+    "create-react-context": "^0.2.2",
+    "css-element-queries": "^1.1.1",
+    "date-fns": "^1.29.0",
+    "deep-eql": "^3.0.0",
+    "difference": "^1.0.2",
+    "dnd-core": "^2.6.0",
+    "draft-convert": "^2.1.8",
+    "draft-js": "^0.10.5",
+    "draft-js-export-html": "^1.3.3",
+    "gradient-parser": "^0.1.5",
+    "hoist-non-react-methods": "^1.1.0",
+    "is-image": "^1.0.1",
+    "is-url": "^1.2.2",
+    "lodash": "^4.17.4",
+    "moment": "2.22.2",
+    "omit": "^1.0.1",
+    "popper.js": "^1.14.5",
+    "prop-types": "^15.5.8",
+    "rc-slider": "^8.0.2",
+    "react-addons-shallow-compare": "^15.3.1",
+    "react-addons-update": "^15.3.2",
+    "react-collapse": "^4.0.3",
+    "react-day-picker": "^7.0.7",
+    "react-dnd": "^2.5.1",
+    "react-dnd-html5-backend": "^5.0.1",
+    "react-modal": "^3.3.2",
+    "react-motion": "^0.4.7",
+    "react-portal": "^4.1.5",
+    "react-slick": "^0.24.0",
+    "react-transition-group": "^2.2.1",
+    "react-window": "^1.7.1",
+    "recompose": "^0.18.0",
+    "shallowequal": "^1.1.0",
+    "slate": "^0.20.3",
+    "slick-carousel": "^1.8.1",
+    "wix-animations": "^1.0.276",
+    "wix-eventually": "^2.2.0",
+    "wix-ui-backoffice": "^1.0.339",
+    "wix-ui-core": "^2.0.174",
+    "wix-ui-icons-common": "^2.0.9",
+    "wix-ui-test-utils": "^1.0.151"
+  },
+  "lint-staged": {
+    "linters": {
+      "*.{js,scss}": [
+        "yoshi lint --fix",
+        "git add"
+      ]
+    },
+    "ignore": [
+      ".wuf/generator/templates/**"
+    ]
+  },
+  "jest": {
+    "setupFiles": [
+      "<rootDir>/test/jest-setup.js"
+    ],
+    "setupFilesAfterEnv": [
+      "wix-ui-test-utils/jest-setup"
+    ],
+    "moduleNameMapper": {
+      "\\.(?!\\st).(css|less|scss)$": "identity-obj-proxy"
+    },
+    "testPathIgnorePatterns": [
+      "<rootDir>/dist/",
+      "<rootDir>/node_modules/",
+      "<rootDir>/test-runtime/",
+      "<rootDir>/.wuf"
+    ]
+  },
+  "eslintConfig": {
+    "extends": "yoshi",
+    "env": {
+      "jest": true
+    },
+    "parserOptions": {
+      "ecmaFeatures": {
+        "legacyDecorators": true
+      }
+    },
+    "rules": {
+      "import/no-unresolved": 0,
+      "jsx-a11y/alt-text": 0,
+      "jsx-a11y/anchor-is-valid": 0,
+      "react/forbid-foreign-prop-types": 0,
+      "react/jsx-handler-names": 0,
+      "react/no-find-dom-node": 0,
+      "react/no-string-refs": 0,
+      "react/jsx-boolean-value": 2,
+      "no-restricted-properties": [
+        "error",
+        {
+          "object": "browser",
+          "property": "pause",
+          "message": "Do not commit browser.pause()."
+        },
+        {
+          "object": "browser",
+          "property": "sleep",
+          "message": "Do not commit browser.sleep()."
+        },
+        {
+          "object": "eyes",
+          "property": "fit",
+          "message": "Do not commit eyes.fit()."
+        }
+      ],
+      "no-restricted-globals": [
+        "error",
+        "fdescribe",
+        "fit",
+        {
+          "name": "Proxy",
+          "message": "Proxy not supported in IE11."
+        }
+      ],
+      "no-restricted-imports": [
+        "error",
+        {
+          "patterns": [
+            "wix-ui-core/*",
+            "!wix-ui-core/dist",
+            "!wix-ui-core/drivers"
+          ],
+          "paths": [
+            {
+              "name": "lodash/isObject",
+              "message": "Please use {isObject} from src/utils/operators"
+            },
+            {
+              "name": "lodash/mapValue",
+              "message": "Please use {mapValue} from src/utils/operators"
+            },
+            {
+              "name": "lodash/pick",
+              "message": "Please use {pick} from src/utils/operators"
+            },
+            {
+              "name": "lodash/pickBy",
+              "message": "Please use {pickBy} from src/utils/operators"
+            },
+            {
+              "name": "lodash/range",
+              "message": "Please use {range} from src/utils/operators"
+            },
+            {
+              "name": "lodash/times",
+              "message": "Please use {times} from src/utils/operators"
+            },
+            {
+              "name": "lodash/values",
+              "message": "Please use {values} from src/utils/operators"
+            }
+          ]
+        }
+      ],
+      "no-console": "error"
+    },
+    "overrides": [
+      {
+        "files": [
+          "**/*.uni.driver.js"
+        ],
+        "rules": {
+          "no-restricted-properties": [
+            "error",
+            {
+              "property": "getNative",
+              "message": "Do not use getNative() in Unidrivers unless a method needs to return an HTMLElement (In which case, that method also need to be deprecated!)."
+            }
+          ]
+        }
+      },
+      {
+        "files": [
+          "**/*private.uni.driver.js"
+        ],
+        "rules": {
+          "no-restricted-properties": [
+            "off",
+            {
+              "property": "getNative",
+              "message": "getNative is allowed in private drivers"
+            }
+          ]
+        }
+      }
+    ]
+  }
+}

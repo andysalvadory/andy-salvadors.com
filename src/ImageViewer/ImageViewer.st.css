@@ -1,0 +1,149 @@
+
+:import {
+  -st-from: "wix-ui-core/dist/src/themes/backoffice/colors.st.css";
+  -st-named: B50, B40, R10, D50;
+}
+
+:import {
+  -st-from: "wix-ui-core/dist/src/themes/backoffice/border.st.css";
+  -st-named: radius08;
+}
+
+:import {
+  -st-from: "wix-ui-core/dist/src/hocs/Focusable/Focusable.st.css";
+  -st-default: Focusable;
+}
+
+.root {
+  -st-states: error, disabled;
+  position: relative;
+  width: 204.7px;
+  height: 144px;
+  border-radius: value(radius08);
+  background-color: value(B50);
+  display: flex;
+  box-sizing: border-box;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.2s linear;
+  overflow: hidden;
+  backface-visibility: hidden;
+  transform: translate3d(0, 0, 0);
+}
+
+.root:hover {
+  background-color: value(B40);
+}
+
+.root:hover .buttons {
+  display: flex;
+}
+
+.root:hover .image {
+  transform: scale(1.1);
+}
+
+.root:hover .imageBackground {
+  background-color: rgba(32, 69, 94, 0.8);
+}
+
+.root:error {
+  border: 1px solid value(R10);
+}
+
+/** buttons group style **/
+
+.buttons {
+  display: none;
+  color: white;
+  justify-content: center;
+  margin: auto;
+  align-items: baseline;
+  transition: opacity 0.1s linear;
+}
+
+.buttons > :first-child:not(:last-child) {
+  margin-right: 12px;
+}
+
+/** image styles **/
+
+.imageContainer {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.imageBackground {
+  -st-states: removeRadius;
+  transition: all 0.1s linear;
+  border-radius: 6px;
+  background-color: rgba(32, 69, 94, 0);
+  position: absolute;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  cursor: auto;
+}
+
+.imageBackground:removeRadius {
+  border-radius: 0;
+}
+
+.image {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  transform: scale(1);
+  transition: transform 0.2s cubic-bezier(0.18, 0.89, 0.32, 1.28);
+}
+
+/** error styles **/
+
+.errorContainer {
+  position: absolute;
+  right: 9px;
+  top: 9px;
+}
+
+.error {
+  background-color: value(R10);
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+}
+
+.error svg {
+  width: 10px;
+  height: 10px;
+}
+
+/** disabled styles */
+
+.root:disabled {
+  cursor: not-allowed;
+}
+
+.root:disabled .image {
+  opacity: .3;
+}
+
+.root:disabled .image:hover {
+  transform: none;
+}
+
+.root:disabled .imageContainer {
+  background-color: value(D50);
+  transition: none;
+}
